@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-//keep track of which tab we are
 enum Tab: String, CaseIterable {
     case leaf
     case house
@@ -44,8 +43,6 @@ struct CustomTabBar: View {
         }
         .frame(width: nil, height: 60)
         .background(.thinMaterial)
-        //.cornerRadius(10)
-        //.padding()
     }
     
     private func tabName(for tab: Tab) -> String {
