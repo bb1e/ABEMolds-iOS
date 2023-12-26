@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+//keep track of which tab we are
 enum Tab: String, CaseIterable {
     case leaf
     case house

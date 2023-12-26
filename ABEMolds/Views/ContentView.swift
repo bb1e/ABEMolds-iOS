@@ -17,19 +17,22 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             VStack {
-                Text("Welcome to your dashboard")
-                    .font(.system(size: 35))
-                    .bold()
-                    .padding()
-                    .padding(.trailing, 90)
-                //homepage stats
+                Group {
+                    if selectedTab == .leaf {
+                        ReportsView()
+                    } else if selectedTab == .house {
+                        DashboardView()
+                    } else if selectedTab == .gearshape {
+                        MoldsView()
+                    }
+                }
+                VStack {
+                    //Spacer()
+                    CustomTabBar(selectedTab: $selectedTab)
                 }
             }
-            VStack {
-                Spacer()
-                CustomTabBar(selectedTab: $selectedTab)
-            }
         }
+    }
 }
 
 #Preview {
