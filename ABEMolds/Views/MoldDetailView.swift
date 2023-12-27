@@ -7,67 +7,90 @@
 
 import SwiftUI
 
+enum ActiveSheet {
+ case none, arView, detailedReportsView, partsControlView
+}
+
 struct MoldDetailView: View {
     
     var item: String
     @Environment(\.presentationMode) var presentationMode
+    @Binding var activeSheet: ActiveSheet
     
     var body: some View {
         NavigationView {
             VStack() {
                 Text(item)
-                    .font(.system(size: 35))
-                    .bold()
-                    .padding()
-                    .padding(.trailing)
+                    .font(.system(size: 24))
+                    .frame(width: 374, alignment: .topLeading)
                 //Spacer()
-                Image(.image)
-                Text("Status: ")
-                Text("Cavity Temperature: ")
-                Text("Machine: ")
-                Text("Customer: ")
-                Text("Production Time: ")
+                Rectangle()
+                .foregroundColor(.clear)
+                .frame(width: 393, height: 264.66049)
+                .background(
+                    Image(.image)
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(width: 393, height: 264.6604919433594)
+                .clipped()
+                )
+                Text("STATUS: Cooling\nCAVITY TEMPERATURE: 123ºC\nMACHINE: A12 ENGEL\nCUSTOMER: LEGO\nPRODUCTION TIME: 3h 42min 12s")
+                .font(Font.custom("SF Pro", size: 20))
+                .foregroundColor(.black)
+                .lineSpacing(8)
                 
                 HStack {
-                    NavigationLink(destination: MoldARView()) {
-                        HStack {
-                            Image(systemName: "star")
+                    /*Button(action: {
+                     activeSheet = .arView
+                    }) {*/
+                    NavigationLink (destination: MoldARView()) {
+                        HStack (alignment: .center, spacing: 10) {
+                            Image(systemName: "arkit")
                             Text("AR")
                         }
                         .foregroundColor(.white)
-                        .padding()
-                        .background(Color.blue)
-                        .cornerRadius(10)
+                        .padding(.horizontal, 20)
+                        .padding(.vertical, 14)
+                        .frame(width: 175, alignment: .center)
+                        .background(Color(red: 0, green: 0.48, blue: 1))
+                        .cornerRadius(14)
                     }
                     
-                    NavigationLink(destination: PartsControlView()) {
-                        HStack {
-                            Image(systemName: "star")
+                    /*Button(action: {
+                     activeSheet = .partsControlView
+                    }) {*/
+                    NavigationLink (destination: PartsControlView()) {
+                        HStack (alignment: .center, spacing: 10) {
+                            Image(systemName: "doc.plaintext")
                             Text("Parts Control")
                         }
                         .foregroundColor(.white)
-                        .padding()
-                        .background(Color.blue)
-                        .cornerRadius(10)
+                        .padding(.horizontal, 20)
+                        .padding(.vertical, 14)
+                        .frame(width: 175, alignment: .center)
+                        .background(Color(red: 0, green: 0.48, blue: 1))
+                        .cornerRadius(14)
                     }
                 }
                 
-                NavigationLink(destination: DetailedReportsView(item: item)) {
-                    HStack {
-                        Image(systemName: "star")
+                
+                /*Button(action: {
+                 activeSheet = .detailedReportsView
+                }) {*/
+                NavigationLink (destination: DetailedReportsView(item: item)) {
+                    HStack (alignment: .center, spacing: 10) {
+                        Image(systemName: "chart.pie")
                         Text("Reports")
                     }
+                    .padding(.horizontal, 20)
+                    .padding(.vertical, 14)
+                    .frame(width: 366, alignment: .center)
+                    .background(.blue)
                     .foregroundColor(.white)
-                    .padding()
-                    .background(Color.blue)
-                    .cornerRadius(10)
+                    .cornerRadius(14)
                 }
                 
             }
         }
     }
-}
-
-#Preview {
-    MoldDetailView(item: "legoooooo")
 }
