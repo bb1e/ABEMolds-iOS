@@ -7,6 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		485C645C2B3E54BB00C94F86 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 485C645B2B3E54BB00C94F86 /* GoogleService-Info.plist */; };
+		485C64602B3E575500C94F86 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 485C645F2B3E575500C94F86 /* FirebaseAnalytics */; };
+		485C64622B3E575500C94F86 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 485C64612B3E575500C94F86 /* FirebaseAuth */; };
+		485C64642B3E575500C94F86 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 485C64632B3E575500C94F86 /* FirebaseDatabase */; };
+		485C64662B3E575500C94F86 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 485C64652B3E575500C94F86 /* FirebaseFirestore */; };
+		485C64682B3E575500C94F86 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 485C64672B3E575500C94F86 /* FirebaseStorage */; };
+		4860ADEF2B3EDF97007AD057 /* Mold.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4860ADEE2B3EDF97007AD057 /* Mold.swift */; };
+		4860ADF12B3EDFC6007AD057 /* CurrentParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4860ADF02B3EDFC6007AD057 /* CurrentParameters.swift */; };
+		4860ADF32B3EDFD6007AD057 /* Days.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4860ADF22B3EDFD6007AD057 /* Days.swift */; };
+		4860ADF52B3EE00D007AD057 /* ManufactoringParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4860ADF42B3EE00D007AD057 /* ManufactoringParameters.swift */; };
+		4860ADF72B3EE033007AD057 /* Weeks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4860ADF62B3EE033007AD057 /* Weeks.swift */; };
+		4860ADF92B3EE068007AD057 /* CavityTemp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4860ADF82B3EE068007AD057 /* CavityTemp.swift */; };
+		4860ADFB2B3EE07A007AD057 /* CoolingTemp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4860ADFA2B3EE07A007AD057 /* CoolingTemp.swift */; };
+		4860ADFD2B3EE090007AD057 /* CoolingTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4860ADFC2B3EE090007AD057 /* CoolingTime.swift */; };
+		4860ADFF2B3EE0B0007AD057 /* FillPressure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4860ADFE2B3EE0B0007AD057 /* FillPressure.swift */; };
+		4860AE012B3EE0D2007AD057 /* HoldPressure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4860AE002B3EE0D2007AD057 /* HoldPressure.swift */; };
+		4860AE032B3EE0E3007AD057 /* InjectionFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4860AE022B3EE0E3007AD057 /* InjectionFlow.swift */; };
+		4860AE052B3EE0F3007AD057 /* PackPressure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4860AE042B3EE0F3007AD057 /* PackPressure.swift */; };
+		4860AE072B3EE107007AD057 /* PackTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4860AE062B3EE107007AD057 /* PackTime.swift */; };
+		4860AE092B3EE11C007AD057 /* PlasticTemp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4860AE082B3EE11C007AD057 /* PlasticTemp.swift */; };
+		4860AE0B2B3EE935007AD057 /* MoldsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4860AE0A2B3EE935007AD057 /* MoldsViewModel.swift */; };
+		4860AE0D2B3EE945007AD057 /* MoldsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4860AE0C2B3EE945007AD057 /* MoldsManager.swift */; };
 		489940A32B3A00BE001CFC25 /* CardSectionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489940A22B3A00BE001CFC25 /* CardSectionList.swift */; };
 		489940A52B3A045D001CFC25 /* MoldDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489940A42B3A045D001CFC25 /* MoldDetailView.swift */; };
 		48BEA5532B043F3F002B7C67 /* DonutChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BEA5522B043F3F002B7C67 /* DonutChart.swift */; };
@@ -46,6 +68,23 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		485C645B2B3E54BB00C94F86 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4860ADEE2B3EDF97007AD057 /* Mold.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mold.swift; sourceTree = "<group>"; };
+		4860ADF02B3EDFC6007AD057 /* CurrentParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentParameters.swift; sourceTree = "<group>"; };
+		4860ADF22B3EDFD6007AD057 /* Days.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Days.swift; sourceTree = "<group>"; };
+		4860ADF42B3EE00D007AD057 /* ManufactoringParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManufactoringParameters.swift; sourceTree = "<group>"; };
+		4860ADF62B3EE033007AD057 /* Weeks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weeks.swift; sourceTree = "<group>"; };
+		4860ADF82B3EE068007AD057 /* CavityTemp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CavityTemp.swift; sourceTree = "<group>"; };
+		4860ADFA2B3EE07A007AD057 /* CoolingTemp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoolingTemp.swift; sourceTree = "<group>"; };
+		4860ADFC2B3EE090007AD057 /* CoolingTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoolingTime.swift; sourceTree = "<group>"; };
+		4860ADFE2B3EE0B0007AD057 /* FillPressure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillPressure.swift; sourceTree = "<group>"; };
+		4860AE002B3EE0D2007AD057 /* HoldPressure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoldPressure.swift; sourceTree = "<group>"; };
+		4860AE022B3EE0E3007AD057 /* InjectionFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InjectionFlow.swift; sourceTree = "<group>"; };
+		4860AE042B3EE0F3007AD057 /* PackPressure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackPressure.swift; sourceTree = "<group>"; };
+		4860AE062B3EE107007AD057 /* PackTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackTime.swift; sourceTree = "<group>"; };
+		4860AE082B3EE11C007AD057 /* PlasticTemp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlasticTemp.swift; sourceTree = "<group>"; };
+		4860AE0A2B3EE935007AD057 /* MoldsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoldsViewModel.swift; sourceTree = "<group>"; };
+		4860AE0C2B3EE945007AD057 /* MoldsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoldsManager.swift; sourceTree = "<group>"; };
 		489940A22B3A00BE001CFC25 /* CardSectionList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSectionList.swift; sourceTree = "<group>"; };
 		489940A42B3A045D001CFC25 /* MoldDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoldDetailView.swift; sourceTree = "<group>"; };
 		48BEA5522B043F3F002B7C67 /* DonutChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonutChart.swift; sourceTree = "<group>"; };
@@ -74,7 +113,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				485C64602B3E575500C94F86 /* FirebaseAnalytics in Frameworks */,
+				485C64622B3E575500C94F86 /* FirebaseAuth in Frameworks */,
+				485C64642B3E575500C94F86 /* FirebaseDatabase in Frameworks */,
+				485C64662B3E575500C94F86 /* FirebaseFirestore in Frameworks */,
 				48BEA5582B044046002B7C67 /* SwiftUICharts in Frameworks */,
+				485C64682B3E575500C94F86 /* FirebaseStorage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,6 +139,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		485C645A2B3CC02A00C94F86 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				4860AE0C2B3EE945007AD057 /* MoldsManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		485C645E2B3E575500C94F86 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		48C1A0C02AFC182000BF0582 = {
 			isa = PBXGroup;
 			children = (
@@ -102,6 +161,7 @@
 				48C1A0DC2AFC182100BF0582 /* ABEMoldsTests */,
 				48C1A0E62AFC182100BF0582 /* ABEMoldsUITests */,
 				48C1A0CA2AFC182000BF0582 /* Products */,
+				485C645E2B3E575500C94F86 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -118,12 +178,14 @@
 		48C1A0CB2AFC182000BF0582 /* ABEMolds */ = {
 			isa = PBXGroup;
 			children = (
+				485C645A2B3CC02A00C94F86 /* Managers */,
 				48E4C4142AFC2C24008A5A9C /* Helpers */,
 				48E4C4132AFC2C07008A5A9C /* Models */,
 				48E4C4122AFC2BF8008A5A9C /* ViewModels */,
 				48E4C4102AFC2B9E008A5A9C /* Views */,
 				48C1A0CC2AFC182000BF0582 /* ABEMoldsApp.swift */,
 				48C1A0D02AFC182100BF0582 /* Assets.xcassets */,
+				485C645B2B3E54BB00C94F86 /* GoogleService-Info.plist */,
 				48C1A0D22AFC182100BF0582 /* Preview Content */,
 			);
 			path = ABEMolds;
@@ -184,6 +246,7 @@
 		48E4C4122AFC2BF8008A5A9C /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				4860AE0A2B3EE935007AD057 /* MoldsViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -191,6 +254,20 @@
 		48E4C4132AFC2C07008A5A9C /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				4860ADEE2B3EDF97007AD057 /* Mold.swift */,
+				4860ADF02B3EDFC6007AD057 /* CurrentParameters.swift */,
+				4860ADF22B3EDFD6007AD057 /* Days.swift */,
+				4860ADF42B3EE00D007AD057 /* ManufactoringParameters.swift */,
+				4860ADF62B3EE033007AD057 /* Weeks.swift */,
+				4860ADF82B3EE068007AD057 /* CavityTemp.swift */,
+				4860ADFA2B3EE07A007AD057 /* CoolingTemp.swift */,
+				4860ADFC2B3EE090007AD057 /* CoolingTime.swift */,
+				4860ADFE2B3EE0B0007AD057 /* FillPressure.swift */,
+				4860AE002B3EE0D2007AD057 /* HoldPressure.swift */,
+				4860AE022B3EE0E3007AD057 /* InjectionFlow.swift */,
+				4860AE042B3EE0F3007AD057 /* PackPressure.swift */,
+				4860AE062B3EE107007AD057 /* PackTime.swift */,
+				4860AE082B3EE11C007AD057 /* PlasticTemp.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -220,6 +297,11 @@
 			name = ABEMolds;
 			packageProductDependencies = (
 				48BEA5572B044046002B7C67 /* SwiftUICharts */,
+				485C645F2B3E575500C94F86 /* FirebaseAnalytics */,
+				485C64612B3E575500C94F86 /* FirebaseAuth */,
+				485C64632B3E575500C94F86 /* FirebaseDatabase */,
+				485C64652B3E575500C94F86 /* FirebaseFirestore */,
+				485C64672B3E575500C94F86 /* FirebaseStorage */,
 			);
 			productName = ABEMolds;
 			productReference = 48C1A0C92AFC182000BF0582 /* ABEMolds.app */;
@@ -295,6 +377,7 @@
 			mainGroup = 48C1A0C02AFC182000BF0582;
 			packageReferences = (
 				48BEA5562B044046002B7C67 /* XCRemoteSwiftPackageReference "ChartView" */,
+				485C645D2B3E566900C94F86 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 48C1A0CA2AFC182000BF0582 /* Products */;
 			projectDirPath = "";
@@ -314,6 +397,7 @@
 			files = (
 				48C1A0D42AFC182100BF0582 /* Preview Assets.xcassets in Resources */,
 				48C1A0D12AFC182100BF0582 /* Assets.xcassets in Resources */,
+				485C645C2B3E54BB00C94F86 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -338,19 +422,35 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4860ADFD2B3EE090007AD057 /* CoolingTime.swift in Sources */,
+				4860AE072B3EE107007AD057 /* PackTime.swift in Sources */,
 				48C1A0CF2AFC182000BF0582 /* ContentView.swift in Sources */,
 				48CC42412AFC1DA000C8A4AE /* CustomTabBar.swift in Sources */,
+				4860AE0D2B3EE945007AD057 /* MoldsManager.swift in Sources */,
 				48BEA5532B043F3F002B7C67 /* DonutChart.swift in Sources */,
 				48F9745A2B3A679900869F96 /* PartsControlView.swift in Sources */,
 				48F974562B3A62DE00869F96 /* DetailedReportsView.swift in Sources */,
 				489940A52B3A045D001CFC25 /* MoldDetailView.swift in Sources */,
+				4860ADF32B3EDFD6007AD057 /* Days.swift in Sources */,
 				48BEA55C2B044182002B7C67 /* DashboardView.swift in Sources */,
+				4860AE092B3EE11C007AD057 /* PlasticTemp.swift in Sources */,
+				4860AE032B3EE0E3007AD057 /* InjectionFlow.swift in Sources */,
+				4860ADFF2B3EE0B0007AD057 /* FillPressure.swift in Sources */,
+				4860ADF92B3EE068007AD057 /* CavityTemp.swift in Sources */,
+				4860ADFB2B3EE07A007AD057 /* CoolingTemp.swift in Sources */,
 				48BEA55E2B04419C002B7C67 /* MoldsView.swift in Sources */,
+				4860AE052B3EE0F3007AD057 /* PackPressure.swift in Sources */,
 				48C1A0CD2AFC182000BF0582 /* ABEMoldsApp.swift in Sources */,
+				4860ADF52B3EE00D007AD057 /* ManufactoringParameters.swift in Sources */,
 				489940A32B3A00BE001CFC25 /* CardSectionList.swift in Sources */,
+				4860ADF12B3EDFC6007AD057 /* CurrentParameters.swift in Sources */,
+				4860AE012B3EE0D2007AD057 /* HoldPressure.swift in Sources */,
+				4860AE0B2B3EE935007AD057 /* MoldsViewModel.swift in Sources */,
 				48F974582B3A638400869F96 /* MoldARView.swift in Sources */,
 				48BEA55A2B04415E002B7C67 /* ReportsView.swift in Sources */,
+				4860ADF72B3EE033007AD057 /* Weeks.swift in Sources */,
 				48BEA5552B043FAC002B7C67 /* LineChart.swift in Sources */,
+				4860ADEF2B3EDF97007AD057 /* Mold.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -682,6 +782,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		485C645D2B3E566900C94F86 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.19.1;
+			};
+		};
 		48BEA5562B044046002B7C67 /* XCRemoteSwiftPackageReference "ChartView" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/AppPear/ChartView";
@@ -693,6 +801,31 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		485C645F2B3E575500C94F86 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 485C645D2B3E566900C94F86 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		485C64612B3E575500C94F86 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 485C645D2B3E566900C94F86 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		485C64632B3E575500C94F86 /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 485C645D2B3E566900C94F86 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		485C64652B3E575500C94F86 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 485C645D2B3E566900C94F86 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		485C64672B3E575500C94F86 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 485C645D2B3E566900C94F86 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
 		48BEA5572B044046002B7C67 /* SwiftUICharts */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 48BEA5562B044046002B7C67 /* XCRemoteSwiftPackageReference "ChartView" */;
