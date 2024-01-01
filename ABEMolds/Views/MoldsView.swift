@@ -7,39 +7,82 @@
 
 import SwiftUI
 
+
 struct MoldsView: View {
-    
+
     var elements: [String] = ["Lego 3x8 Blocks", "6-Pin Electrical Conector", "Light Switch", "Center Console Bezel"]
     var elements2: [String] = ["4-Pin Electrical Conector", "Radio Volume Knob"]
-    
-    @State private var selectedItem: String = ""
-    @State private var activeSheet: ActiveSheet = .none
-    
+    var manager = MoldsManager()
+    @State var molds: [Mold] = []
+
+    //@State var selectedItem: Mold
+    @State var selectedItem: String = ""
+    @State var isSelected: Bool = false
+    @State private var path: [String] = []
+
     var body: some View {
-        NavigationView {
+        NavigationStack(path: $path) {
             VStack {
-                
-                if !selectedItem.isEmpty && activeSheet == .none{
-                    NavigationLink(destination: MoldDetailView(item: selectedItem, activeSheet: $activeSheet), isActive: Binding(get: { !selectedItem.isEmpty && activeSheet == .none }, set: { _ in selectedItem = "" })) { }
-                } else if !selectedItem.isEmpty && activeSheet == .arView{
-                    NavigationLink(destination: MoldARView(), isActive: Binding(get: { !selectedItem.isEmpty && activeSheet == .arView }, set: { _ in selectedItem = "" })) { }
-                } else {
+                /*if isSelected {
+                    
+                } else {*/
                     Text("Manage mold production")
                         .font(.system(size: 35))
                         .bold()
                         .padding()
                         .padding(.trailing, 90)
-                    
+
                     Spacer()
-                    CardSectionList(elements: elements, title: "IN PRODUCTION", selectedItem: $selectedItem)
-                    CardSectionList(elements: elements2, title: "STOPPED", selectedItem: $selectedItem)
+                    VStack {
+                        Text("IN PRODUCTION")
+                            .font(.caption)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .foregroundColor(.gray)
+                        List {
+                            ForEach(elements, id: \.self) { item in
+                                NavigationLink(value: item) {
+                                    Text(item)
+                                }
+                            }
+                        }
+                        .navigationDestination(for: String.self) { item in
+                            MoldDetailView(item: item)
+                        }                    }
+                    .padding()
+                    .background(Color.white)
+                    .cornerRadius(10)
+                    .shadow(radius: 10)
+                    VStack {
+                        Text("STOPPED")
+                            .font(.caption)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .foregroundColor(.gray)
+                        List {
+                            ForEach(elements2, id: \.self) { item in
+                                NavigationLink(value: item) {
+                                    Text(item)
+                                }
+                            }
+                        }
+                        .navigationDestination(for: String.self) { item in
+                            MoldDetailView(item: item)
+                        }
+                    }
+                    .padding()
+                    .background(Color.white)
+                    .cornerRadius(10)
+                    .shadow(radius: 10)
+                    
                 }
+                
             }
             .padding()
         }
-    }
-}
-
-#Preview {
-    MoldsView()
+        /*.onAppear {
+            manager.fetchMolds { fetchedMolds in
+                self.molds = fetchedMolds
+                //print(fetchedMolds)
+            }
+        }*/
+    //}
 }

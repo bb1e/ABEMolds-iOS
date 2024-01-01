@@ -7,15 +7,11 @@
 
 import SwiftUI
 
-enum ActiveSheet {
- case none, arView, detailedReportsView, partsControlView
-}
 
 struct MoldDetailView: View {
     
     var item: String
     @Environment(\.presentationMode) var presentationMode
-    @Binding var activeSheet: ActiveSheet
     
     var body: some View {
         NavigationView {
@@ -40,9 +36,6 @@ struct MoldDetailView: View {
                 .lineSpacing(8)
                 
                 HStack {
-                    /*Button(action: {
-                     activeSheet = .arView
-                    }) {*/
                     NavigationLink (destination: MoldARView()) {
                         HStack (alignment: .center, spacing: 10) {
                             Image(systemName: "arkit")
@@ -55,11 +48,8 @@ struct MoldDetailView: View {
                         .background(Color(red: 0, green: 0.48, blue: 1))
                         .cornerRadius(14)
                     }
-                    
-                    /*Button(action: {
-                     activeSheet = .partsControlView
-                    }) {*/
-                    NavigationLink (destination: PartsControlView()) {
+        
+                    NavigationLink (destination: PartsControlView(item: item)) {
                         HStack (alignment: .center, spacing: 10) {
                             Image(systemName: "doc.plaintext")
                             Text("Parts Control")
@@ -73,10 +63,6 @@ struct MoldDetailView: View {
                     }
                 }
                 
-                
-                /*Button(action: {
-                 activeSheet = .detailedReportsView
-                }) {*/
                 NavigationLink (destination: DetailedReportsView(item: item)) {
                     HStack (alignment: .center, spacing: 10) {
                         Image(systemName: "chart.pie")

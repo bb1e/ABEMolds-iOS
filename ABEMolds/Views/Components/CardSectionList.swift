@@ -9,10 +9,13 @@ import SwiftUI
 
 struct CardSectionList: View {
 
+    //var elements: [Mold] = []
     var elements: [String] = []
     var title: String = ""
     
+    //@Binding var selectedItem: Mold
     @Binding var selectedItem: String
+    @Binding var isSelected: Bool
 
     var body: some View {
         NavigationView {
@@ -25,8 +28,9 @@ struct CardSectionList: View {
                     ForEach(elements, id: \.self) { item in
                         Button(action: {
                             selectedItem = item
+                            isSelected = true
                         }) {
-                           Text(item)
+                            Text(item /*.projectName*/)
                         }
                     }
                 }

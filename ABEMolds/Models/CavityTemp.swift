@@ -7,6 +7,10 @@
 
 import Foundation
 
-struct CavityTemp: Codable {
+struct CavityTemp: Codable, Hashable {
     var max: Double
+    
+    init(max: Double) {
+        self.max = max
+    }
 }

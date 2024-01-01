@@ -7,14 +7,27 @@
 
 import Foundation
 
-struct ManufactoringParameters: Codable {
+struct ManufactoringParameters: Codable, Hashable {
     var cavityTemp: CavityTemp
     var coolingTemp: CoolingTemp
     var coolingTime: CoolingTime
     var fillPressure: FillPressure
+    //var fillTime: FillTime
     var holdPressure: HoldPressure
     var injectionFlow: InjectionFlow
     var packPressure: PackPressure
     var packTime: PackTime
     var plasticTemp: PlasticTemp
+    
+    init(cavityTemp: CavityTemp, coolingTemp: CoolingTemp, coolingTime: CoolingTime, fillPressure: FillPressure, holdPressure: HoldPressure, injectionFlow: InjectionFlow, packPressure: PackPressure, packTime: PackTime, plasticTemp: PlasticTemp) {
+        self.cavityTemp = cavityTemp
+        self.coolingTemp = coolingTemp
+        self.coolingTime = coolingTime
+        self.fillPressure = fillPressure
+        self.holdPressure = holdPressure
+        self.injectionFlow = injectionFlow
+        self.packPressure = packPressure
+        self.packTime = packTime
+        self.plasticTemp = plasticTemp
+    }
 }

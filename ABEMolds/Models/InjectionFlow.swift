@@ -7,7 +7,12 @@
 
 import Foundation
 
-struct InjectionFlow: Codable {
+struct InjectionFlow: Codable, Hashable {
     var max: Double
     var min: Double
+    
+    init(max: Double, min: Double) {
+        self.max = max
+        self.min = min
+    }
 }

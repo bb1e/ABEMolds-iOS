@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var selectedTab: Tab = .house
+    var manager = MoldsManager()
+    @State var molds: [Mold] = []
     
     init() {
         UITabBar.appearance().isHidden = true
@@ -30,6 +32,12 @@ struct ContentView: View {
                     //Spacer()
                     CustomTabBar(selectedTab: $selectedTab)
                 }
+            }
+        }
+        .onAppear {
+            manager.fetchMolds { fetchedMolds in
+                self.molds = fetchedMolds
+                //print(fetchedMolds)
             }
         }
     }

@@ -8,13 +8,16 @@
 import SwiftUI
 
 struct PartsControlView: View {
+    var item: String
+    @Environment(\.presentationMode) var presentationMode
+    
     var body: some View {
         VStack {
             Text("Parts Control")
               .font(Font.custom("SF Pro", size: 24))
               .foregroundColor(.black)
               .frame(width: 374, alignment: .topLeading)
-            Text("LEGO 3x8 Blocks")
+            Text(item)
               .font(Font.custom("SF Pro", size: 16))
               .foregroundColor(.black)
               .frame(width: 374, alignment: .topLeading)
@@ -77,6 +80,3 @@ struct PartsControlView: View {
     }
 }
 
-#Preview {
-    PartsControlView()
-}

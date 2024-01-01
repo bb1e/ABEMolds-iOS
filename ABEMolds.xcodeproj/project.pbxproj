@@ -15,9 +15,9 @@
 		485C64682B3E575500C94F86 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 485C64672B3E575500C94F86 /* FirebaseStorage */; };
 		4860ADEF2B3EDF97007AD057 /* Mold.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4860ADEE2B3EDF97007AD057 /* Mold.swift */; };
 		4860ADF12B3EDFC6007AD057 /* CurrentParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4860ADF02B3EDFC6007AD057 /* CurrentParameters.swift */; };
-		4860ADF32B3EDFD6007AD057 /* Days.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4860ADF22B3EDFD6007AD057 /* Days.swift */; };
+		4860ADF32B3EDFD6007AD057 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4860ADF22B3EDFD6007AD057 /* Day.swift */; };
 		4860ADF52B3EE00D007AD057 /* ManufactoringParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4860ADF42B3EE00D007AD057 /* ManufactoringParameters.swift */; };
-		4860ADF72B3EE033007AD057 /* Weeks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4860ADF62B3EE033007AD057 /* Weeks.swift */; };
+		4860ADF72B3EE033007AD057 /* Week.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4860ADF62B3EE033007AD057 /* Week.swift */; };
 		4860ADF92B3EE068007AD057 /* CavityTemp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4860ADF82B3EE068007AD057 /* CavityTemp.swift */; };
 		4860ADFB2B3EE07A007AD057 /* CoolingTemp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4860ADFA2B3EE07A007AD057 /* CoolingTemp.swift */; };
 		4860ADFD2B3EE090007AD057 /* CoolingTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4860ADFC2B3EE090007AD057 /* CoolingTime.swift */; };
@@ -44,6 +44,8 @@
 		48C1A0DE2AFC182100BF0582 /* ABEMoldsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C1A0DD2AFC182100BF0582 /* ABEMoldsTests.swift */; };
 		48C1A0E82AFC182100BF0582 /* ABEMoldsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C1A0E72AFC182100BF0582 /* ABEMoldsUITests.swift */; };
 		48C1A0EA2AFC182100BF0582 /* ABEMoldsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C1A0E92AFC182100BF0582 /* ABEMoldsUITestsLaunchTests.swift */; };
+		48C29CEA2B4100C5003F1D2E /* NavigationPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C29CE92B4100C5003F1D2E /* NavigationPath.swift */; };
+		48C29CEC2B41014F003F1D2E /* FillTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C29CEB2B41014F003F1D2E /* FillTime.swift */; };
 		48CC42412AFC1DA000C8A4AE /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CC42402AFC1DA000C8A4AE /* CustomTabBar.swift */; };
 		48F974562B3A62DE00869F96 /* DetailedReportsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F974552B3A62DE00869F96 /* DetailedReportsView.swift */; };
 		48F974582B3A638400869F96 /* MoldARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F974572B3A638400869F96 /* MoldARView.swift */; };
@@ -71,9 +73,9 @@
 		485C645B2B3E54BB00C94F86 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4860ADEE2B3EDF97007AD057 /* Mold.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mold.swift; sourceTree = "<group>"; };
 		4860ADF02B3EDFC6007AD057 /* CurrentParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentParameters.swift; sourceTree = "<group>"; };
-		4860ADF22B3EDFD6007AD057 /* Days.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Days.swift; sourceTree = "<group>"; };
+		4860ADF22B3EDFD6007AD057 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
 		4860ADF42B3EE00D007AD057 /* ManufactoringParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManufactoringParameters.swift; sourceTree = "<group>"; };
-		4860ADF62B3EE033007AD057 /* Weeks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weeks.swift; sourceTree = "<group>"; };
+		4860ADF62B3EE033007AD057 /* Week.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Week.swift; sourceTree = "<group>"; };
 		4860ADF82B3EE068007AD057 /* CavityTemp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CavityTemp.swift; sourceTree = "<group>"; };
 		4860ADFA2B3EE07A007AD057 /* CoolingTemp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoolingTemp.swift; sourceTree = "<group>"; };
 		4860ADFC2B3EE090007AD057 /* CoolingTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoolingTime.swift; sourceTree = "<group>"; };
@@ -102,6 +104,8 @@
 		48C1A0E32AFC182100BF0582 /* ABEMoldsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ABEMoldsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		48C1A0E72AFC182100BF0582 /* ABEMoldsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ABEMoldsUITests.swift; sourceTree = "<group>"; };
 		48C1A0E92AFC182100BF0582 /* ABEMoldsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ABEMoldsUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		48C29CE92B4100C5003F1D2E /* NavigationPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationPath.swift; sourceTree = "<group>"; };
+		48C29CEB2B41014F003F1D2E /* FillTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillTime.swift; sourceTree = "<group>"; };
 		48CC42402AFC1DA000C8A4AE /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 		48F974552B3A62DE00869F96 /* DetailedReportsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedReportsView.swift; sourceTree = "<group>"; };
 		48F974572B3A638400869F96 /* MoldARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoldARView.swift; sourceTree = "<group>"; };
@@ -256,13 +260,14 @@
 			children = (
 				4860ADEE2B3EDF97007AD057 /* Mold.swift */,
 				4860ADF02B3EDFC6007AD057 /* CurrentParameters.swift */,
-				4860ADF22B3EDFD6007AD057 /* Days.swift */,
+				4860ADF22B3EDFD6007AD057 /* Day.swift */,
 				4860ADF42B3EE00D007AD057 /* ManufactoringParameters.swift */,
-				4860ADF62B3EE033007AD057 /* Weeks.swift */,
+				4860ADF62B3EE033007AD057 /* Week.swift */,
 				4860ADF82B3EE068007AD057 /* CavityTemp.swift */,
 				4860ADFA2B3EE07A007AD057 /* CoolingTemp.swift */,
 				4860ADFC2B3EE090007AD057 /* CoolingTime.swift */,
 				4860ADFE2B3EE0B0007AD057 /* FillPressure.swift */,
+				48C29CEB2B41014F003F1D2E /* FillTime.swift */,
 				4860AE002B3EE0D2007AD057 /* HoldPressure.swift */,
 				4860AE022B3EE0E3007AD057 /* InjectionFlow.swift */,
 				4860AE042B3EE0F3007AD057 /* PackPressure.swift */,
@@ -275,6 +280,7 @@
 		48E4C4142AFC2C24008A5A9C /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				48C29CE92B4100C5003F1D2E /* NavigationPath.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -431,7 +437,9 @@
 				48F9745A2B3A679900869F96 /* PartsControlView.swift in Sources */,
 				48F974562B3A62DE00869F96 /* DetailedReportsView.swift in Sources */,
 				489940A52B3A045D001CFC25 /* MoldDetailView.swift in Sources */,
-				4860ADF32B3EDFD6007AD057 /* Days.swift in Sources */,
+				4860ADF32B3EDFD6007AD057 /* Day.swift in Sources */,
+				48C29CEC2B41014F003F1D2E /* FillTime.swift in Sources */,
+				48C29CEA2B4100C5003F1D2E /* NavigationPath.swift in Sources */,
 				48BEA55C2B044182002B7C67 /* DashboardView.swift in Sources */,
 				4860AE092B3EE11C007AD057 /* PlasticTemp.swift in Sources */,
 				4860AE032B3EE0E3007AD057 /* InjectionFlow.swift in Sources */,
@@ -448,7 +456,7 @@
 				4860AE0B2B3EE935007AD057 /* MoldsViewModel.swift in Sources */,
 				48F974582B3A638400869F96 /* MoldARView.swift in Sources */,
 				48BEA55A2B04415E002B7C67 /* ReportsView.swift in Sources */,
-				4860ADF72B3EE033007AD057 /* Weeks.swift in Sources */,
+				4860ADF72B3EE033007AD057 /* Week.swift in Sources */,
 				48BEA5552B043FAC002B7C67 /* LineChart.swift in Sources */,
 				4860ADEF2B3EDF97007AD057 /* Mold.swift in Sources */,
 			);
@@ -621,7 +629,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -650,7 +658,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

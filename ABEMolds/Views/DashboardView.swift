@@ -12,6 +12,9 @@ struct DashboardView: View {
     let lineChartData: [Double] = [10, 25, 15, 30, 20, 40, 35]
     let colors: [Color] = [Color.green, Color.yellow]
     
+    var manager = MoldsManager()
+    @State var molds: [Mold] = []
+    
     var body: some View {
         ScrollView {
             VStack {
@@ -32,6 +35,12 @@ struct DashboardView: View {
                     .padding()
                     .padding(.bottom, 200)
                 Spacer()
+            }
+        }
+        .onAppear {
+            manager.fetchMolds { fetchedMolds in
+                self.molds = fetchedMolds
+                //print(fetchedMolds)
             }
         }
     }
