@@ -9,80 +9,76 @@ import SwiftUI
 
 
 struct MoldsView: View {
-
-    var elements: [String] = ["Lego 3x8 Blocks", "6-Pin Electrical Conector", "Light Switch", "Center Console Bezel"]
-    var elements2: [String] = ["4-Pin Electrical Conector", "Radio Volume Knob"]
     var manager = MoldsManager()
     @Binding var molds: [Mold]
 
-    //@State var selectedItem: Mold
     @State var selectedItem: String = ""
     @State var isSelected: Bool = false
     @State private var path: [Mold] = []
+    
+    var viewModel = MoldsViewModel()
 
     var body: some View {
         NavigationStack(path: $path) {
             VStack {
-                /*if isSelected {
-                    
-                } else {*/
-                    Text("Manage mold production")
-                        .font(.system(size: 35))
-                        .bold()
-                        .padding()
-                        .padding(.trailing, 90)
-
-                    Spacer()
-                    VStack {
-                        Text("IN PRODUCTION")
-                            .font(.caption)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .foregroundColor(.gray)
-                        List {
-                            ForEach(molds, id: \.self) { mold in
-                                NavigationLink(value: mold) {
-                                    Text(mold.projectName)
-                                }
-                            }
-                        }
-                        .navigationDestination(for: Mold.self) { mold in
-                            MoldDetailView(item: mold)
-                        }                    }
+                Text("Manage mold production")
+                    .font(.system(size: 35))
+                    .bold()
                     .padding()
-                    .background(Color.white)
-                    .cornerRadius(10)
-                    .shadow(radius: 10)
-                    VStack {
-                        Text("STOPPED")
-                            .font(.caption)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .foregroundColor(.gray)
-                        List {
-                            ForEach(molds, id: \.self) { mold in
+                    .padding(.trailing, 90)
+
+                Spacer()
+                VStack {
+                    Text("IN PRODUCTION")
+                        .font(.caption)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .foregroundColor(.gray)
+                    List {
+                        ForEach(molds, id: \.self) { mold in
+                            if viewModel.isAvailable(mold: mold){
                                 NavigationLink(value: mold) {
                                     Text(mold.projectName)
                                 }
                             }
-                        }
-                        .navigationDestination(for: Mold.self) { mold in
-                            MoldDetailView(item: mold)
                         }
                     }
-                    .padding()
-                    .background(Color.white)
-                    .cornerRadius(10)
-                    .shadow(radius: 10)
-                    
+                    .navigationDestination(for: Mold.self) { mold in
+                        MoldDetailView(item: mold)
+                    }                    }
+                .padding()
+                .background(Color.white)
+                .cornerRadius(10)
+                .shadow(radius: 10)
+                VStack {
+                    Text("STOPPED")
+                        .font(.caption)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .foregroundColor(.gray)
+                    List {
+                        ForEach(molds, id: \.self) { mold in
+                            if !viewModel.isAvailable(mold: mold) {
+                                NavigationLink(value: mold) {
+                                    Text(mold.projectName)
+                                }
+                            }
+                        }
+                    }
+                    .navigationDestination(for: Mold.self) { mold in
+                        MoldDetailView(item: mold)
+                    }
                 }
-                
-            }
-            .padding()
-            .onAppear {
-                manager.fetchMolds { fetchedMolds in
-                    self.molds = fetchedMolds
-                    //print(fetchedMolds)
-                }
+                .padding()
+                .background(Color.white)
+                .cornerRadius(10)
+                .shadow(radius: 10)
             }
         }
-    //}
+        .padding()
+        .onAppear {
+            manager.fetchMolds { fetchedMolds in
+                self.molds = fetchedMolds
+                //print(fetchedMolds)
+            }
+        }
+    }
 }

@@ -34,7 +34,7 @@
 		489940A32B3A00BE001CFC25 /* CardSectionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489940A22B3A00BE001CFC25 /* CardSectionList.swift */; };
 		489940A52B3A045D001CFC25 /* MoldDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489940A42B3A045D001CFC25 /* MoldDetailView.swift */; };
 		48BEA5532B043F3F002B7C67 /* DonutChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BEA5522B043F3F002B7C67 /* DonutChart.swift */; };
-		48BEA5552B043FAC002B7C67 /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BEA5542B043FAC002B7C67 /* LineChart.swift */; };
+		48BEA5552B043FAC002B7C67 /* BarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BEA5542B043FAC002B7C67 /* BarChart.swift */; };
 		48BEA5582B044046002B7C67 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = 48BEA5572B044046002B7C67 /* SwiftUICharts */; };
 		48BEA55A2B04415E002B7C67 /* ReportsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BEA5592B04415E002B7C67 /* ReportsView.swift */; };
 		48BEA55C2B044182002B7C67 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BEA55B2B044182002B7C67 /* DashboardView.swift */; };
@@ -94,7 +94,7 @@
 		489940A22B3A00BE001CFC25 /* CardSectionList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSectionList.swift; sourceTree = "<group>"; };
 		489940A42B3A045D001CFC25 /* MoldDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoldDetailView.swift; sourceTree = "<group>"; };
 		48BEA5522B043F3F002B7C67 /* DonutChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonutChart.swift; sourceTree = "<group>"; };
-		48BEA5542B043FAC002B7C67 /* LineChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
+		48BEA5542B043FAC002B7C67 /* BarChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChart.swift; sourceTree = "<group>"; };
 		48BEA5592B04415E002B7C67 /* ReportsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportsView.swift; sourceTree = "<group>"; };
 		48BEA55B2B044182002B7C67 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
 		48BEA55D2B04419C002B7C67 /* MoldsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoldsView.swift; sourceTree = "<group>"; };
@@ -245,7 +245,7 @@
 			children = (
 				48CC42402AFC1DA000C8A4AE /* CustomTabBar.swift */,
 				48BEA5522B043F3F002B7C67 /* DonutChart.swift */,
-				48BEA5542B043FAC002B7C67 /* LineChart.swift */,
+				48BEA5542B043FAC002B7C67 /* BarChart.swift */,
 				489940A22B3A00BE001CFC25 /* CardSectionList.swift */,
 				482F379B2B438DCE00402F39 /* PieChart.swift */,
 			);
@@ -464,7 +464,7 @@
 				48F974582B3A638400869F96 /* MoldARView.swift in Sources */,
 				48BEA55A2B04415E002B7C67 /* ReportsView.swift in Sources */,
 				4860ADF72B3EE033007AD057 /* Week.swift in Sources */,
-				48BEA5552B043FAC002B7C67 /* LineChart.swift in Sources */,
+				48BEA5552B043FAC002B7C67 /* BarChart.swift in Sources */,
 				482F379E2B43945700402F39 /* ChartData.swift in Sources */,
 				4860ADEF2B3EDF97007AD057 /* Mold.swift in Sources */,
 			);

@@ -26,7 +26,7 @@ struct DetailedReportsView: View {
                 
                 Spacer()
                 //homepage stats
-                LineChart(data: lineChartData, title: "Parts Produced")
+                BarChart()
                     .frame(height: 200)
                     .padding()
                     .padding(.bottom, 130)

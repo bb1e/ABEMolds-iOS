@@ -66,7 +66,7 @@ class MoldsManager {
                         let moldId = moldSnapshot.key
 
                         if let currentParameters = moldData["currentParameters"] as? [String: Any]{
-                            let currentCavityTemp = currentParameters["cavityTempC"] as? Double ?? 0.0
+                            currentCavityTemp = currentParameters["cavityTempC"] as? Double ?? 0.0
                             currentInjectionFlow = currentParameters["injectionFlow"] as? Double ?? 0.0
                             currentIsAcceptingParts = currentParameters["isAcceptingParts"] as? Bool ?? true
                             currentIsProducing = currentParameters["isProducing"] as? Bool ?? true
@@ -78,6 +78,8 @@ class MoldsManager {
                         
                         let dateManufacturingEnd = moldData["dateManufacturingEnd"] as? String ?? ""
                         let dateManufacturingStart = moldData["dateManufacturingStart"] as? String ?? ""
+                        let customerName = moldData["customerName"] as? String ?? ""
+                        let machineName = moldData["machineName"] as? String ?? ""
                         
                         if let manufacturingParameters = moldData["manufacturingParameters"] as? [String: Any]{
                             //print("manufacturing parameters: \(manufacturingParameters)")
@@ -124,14 +126,14 @@ class MoldsManager {
                         let projectName = moldData["projectName"] as? String ?? ""
                         let totalPartsProduced = moldData["totalPartsProduced"] as? Int ?? 0
                         
-                        let finalManufacturingEndDate = dateFormatter.date(from: dateManufacturingEnd) ?? Date()
+                        let finalManufacturingEndDate = dateFormatter.date(from: dateManufacturingEnd) ?? Date(timeIntervalSince1970: 0)
                         let finalManufacturingStartDate = dateFormatter.date(from: dateManufacturingStart) ?? Date()
                         
                         dispatchGroup.enter()
                         self.fetchDaysForMold(moldId: moldId) { days in
                             self.fetchWeeksForMold(moldId: moldId) { weeks in
                                 
-                                let finalMold = Mold(id: moldId, currentParameters: CurrentParameters(cavityTempC: currentCavityTemp, injectionFlow: currentInjectionFlow, isAcceptingParts: currentIsAcceptingParts, isProducing: currentIsProducing, overrideUser: currentOverrideUser, plasticTempC: currentPlasticTemp, pressure: currentPressure, stage: currentStage), dateManufactoringEnd: finalManufacturingEndDate, dateManufactoringStart: finalManufacturingStartDate, days: days, manufactoringParameters: ManufactoringParameters(cavityTemp: CavityTemp(max: cavityTempMax), coolingTemp: CoolingTemp(max: coolingTempMax, min: coolingTempMin), coolingTime: CoolingTime(max: coolingTimeMax, min: coolingTimeMin), fillPressure: FillPressure(max: fillPressureMax, min: fillPressureMin), holdPressure: HoldPressure(max: holdPressureMax, min: holdPressureMin), injectionFlow: InjectionFlow(max: injectionFlowMax, min: injectionFlowMin), packPressure: PackPressure(max: packPressureMax, min: packPressureMin), packTime: PackTime(max: packTimeMax, min: packTimeMin), plasticTemp: PlasticTemp(max: plasticTempMax, min: plasticTempMin)), projectName: projectName, totalPartsProduced: totalPartsProduced, weeks: weeks)
+                                let finalMold = Mold(id: moldId, currentParameters: CurrentParameters(cavityTempC: currentCavityTemp, injectionFlow: currentInjectionFlow, isAcceptingParts: currentIsAcceptingParts, isProducing: currentIsProducing, overrideUser: currentOverrideUser, plasticTempC: currentPlasticTemp, pressure: currentPressure, stage: currentStage), dateManufactoringEnd: finalManufacturingEndDate, dateManufactoringStart: finalManufacturingStartDate, days: days, manufactoringParameters: ManufactoringParameters(cavityTemp: CavityTemp(max: cavityTempMax), coolingTemp: CoolingTemp(max: coolingTempMax, min: coolingTempMin), coolingTime: CoolingTime(max: coolingTimeMax, min: coolingTimeMin), fillPressure: FillPressure(max: fillPressureMax, min: fillPressureMin), fillTime: FillTime(max: fillTimeMax, min: fillTimeMin), holdPressure: HoldPressure(max: holdPressureMax, min: holdPressureMin), injectionFlow: InjectionFlow(max: injectionFlowMax, min: injectionFlowMin), packPressure: PackPressure(max: packPressureMax, min: packPressureMin), packTime: PackTime(max: packTimeMax, min: packTimeMin), plasticTemp: PlasticTemp(max: plasticTempMax, min: plasticTempMin)), projectName: projectName, customerName: customerName, machineName: machineName, totalPartsProduced: totalPartsProduced, weeks: weeks)
                                 //print("final mold: \(finalMold)")
                                 molds.append(finalMold)
                                 dispatchGroup.leave()
@@ -203,5 +205,17 @@ class MoldsManager {
             }
             completion(weeks)
         })
+    }
+    
+    func updateOverrideUser(moldId: String, overrideUser: Bool, completion: @escaping (Result<Void, Error>) -> Void) {
+       let ref = Database.database().reference().child("molds").child(moldId)
+       
+       ref.updateChildValues(["currentParameters/overrideUser": overrideUser]) { error, _ in
+           if let error = error {
+               completion(.failure(error))
+           } else {
+               completion(.success(()))
+           }
+       }
     }
 }

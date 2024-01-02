@@ -27,15 +27,22 @@ struct DashboardView: View {
                 
                 Spacer()
                 //homepage stats
-                DonutChart()
-                 .frame(width: 200, height: 200)
-                 .padding()
-                 .padding(.top)
-                 Spacer()
-                LineChart(data: lineChartData, title: "Line Chart")
-                    .frame(height: 200)
-                    .padding()
-                    .padding(.bottom, 200)
+                VStack {
+                    DonutChart()
+                        .frame(width: 200, height: 200)
+                        .padding()
+                        .padding(.top)
+                }
+                .padding()
+                Spacer()
+                VStack {
+                    BarChart()
+                        .frame(height: 200)
+                        .padding()
+                        .padding(.bottom, 200)
+                        .padding(.top)
+                }
+                .padding()
                 Spacer()
             }
         }

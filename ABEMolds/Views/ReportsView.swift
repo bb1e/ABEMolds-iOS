@@ -30,7 +30,7 @@ struct ReportsView: View {
                     .frame(width: 200, height: 200)
                     .padding()
                 Spacer()
-                LineChart(data: lineChartData, title: "Parts Produced")
+                BarChart()
                     .frame(height: 200)
                     .padding()
                     .padding(.bottom, 130)

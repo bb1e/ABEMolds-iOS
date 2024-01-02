@@ -15,6 +15,7 @@ struct MoldDetailView: View {
     
     var viewModel = MoldsViewModel()
     @State var data: [ChartData] = []
+    @State var status: Bool = false
     
     var body: some View {
         NavigationView {
@@ -33,7 +34,7 @@ struct MoldDetailView: View {
                 .frame(width: 393, height: 264.6604919433594)
                 .clipped()
                 )
-                Text("STATUS: \(item.currentParameters.stage)\nCAVITY TEMPERATURE: \(item.currentParameters.cavityTempC)\nMACHINE: A12 ENGEL\nCUSTOMER: LEGO\nPRODUCTION TIME: 3h 42min 12s")
+                Text("STATUS: \(item.currentParameters.stage)\nCAVITY TEMPERATURE: \(item.currentParameters.cavityTempC)\nMACHINE: \(item.machineName)\nCUSTOMER: \(item.customerName)\nPRODUCTION TIME: 3h 42min 12s")
                 .font(Font.custom("SF Pro", size: 20))
                 .foregroundColor(.black)
                 .lineSpacing(8)
@@ -82,6 +83,8 @@ struct MoldDetailView: View {
             }
             .onAppear {
                 data = viewModel.partsProducedByMoldChartData(mold: item)
+                status = viewModel.isAvailable(mold: item)
+                print(status)
             }
         }
     }

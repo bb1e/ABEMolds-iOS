@@ -86,11 +86,19 @@ class MoldsViewModel: ObservableObject {
         return data
     }
     
-    //se a máquina está parada ou não
-    func moldsInProduction() {
-        var molds: [Mold] = []
-        
-        molds = self.getAllMolds()
-        
+    
+    func isAvailable(mold: Mold) -> Bool {
+        var status: Bool = true
+        let dateString = "1970-01-01T00:00:00+0000"
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+        let date = dateFormatter.date(from: dateString)
+        print("\n\n\navailable date: \(date)\n\n\n\n")
+       
+        if mold.dateManufactoringEnd != date {
+            status = false
+        }
+        return status
     }
 }
