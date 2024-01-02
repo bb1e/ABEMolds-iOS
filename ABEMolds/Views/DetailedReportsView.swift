@@ -31,7 +31,7 @@ struct DetailedReportsView: View {
                     .padding()
                     .padding(.bottom, 130)
                 Spacer()
-                DonutChart(dataPoints: doughnutData, colors: colors)
+                DonutChart()
                  .frame(width: 200, height: 200)
                  .padding()
                  Spacer()

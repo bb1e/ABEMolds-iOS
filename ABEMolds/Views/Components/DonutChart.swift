@@ -10,23 +10,34 @@ import SwiftUICharts
 import Charts
 
 struct DonutChart: View {
-    let dataPoints: [Double]
-    let colors: [Color]
+    @State private var data: [ChartData] = [
+        .init(name: "mold 1", value: 100),
+        .init(name: "mold 2", value: 250),
+        .init(name: "mold 3", value: 50)
+    ]
 
     var body: some View {
-        ZStack {
-            ForEach(0..<dataPoints.count) { index in
-                Circle()
-                    .trim(from: index == 0 ? 0 : CGFloat(dataPoints[0...index-1].reduce(0, +)) / 100.0,
-                          to: CGFloat(dataPoints[0...index].reduce(0, +)) / 100.0)
-                    .stroke(style: StrokeStyle(lineWidth: 20, lineCap: .round, lineJoin: .round))
-                    .foregroundColor(colors[index])
-                    .frame(width: 200, height: 200)
-                    .animation(.linear)
+        VStack(alignment: .leading) {
+            Text("Parts Quality")
+                .font(.title2)
+                .fontWeight(.semibold)
+            
+            /*Text("")
+                .font(.footnote)
+                .foregroundStyle(.gray)*/
+            
+            Chart(data, id: \.name) { macro in
+                SectorMark(
+                    angle: .value("macros", macro.value),
+                    innerRadius: .ratio(0.618),
+                    angularInset: 1.5
+                )
+                .cornerRadius(4)
+                .foregroundStyle(by: .value("Name", macro.name))
             }
-            Text("Molds in Production")
-                .foregroundColor(.white)
-                .font(.headline)
+            .frame(height: 250)
+            .chartXAxis(.hidden)
         }
+        .padding()
     }
 }

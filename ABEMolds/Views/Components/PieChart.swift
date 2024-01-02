@@ -32,7 +32,6 @@ struct PieChart: View {
             Chart(data, id: \.name) { macro in
                 SectorMark(
                     angle: .value("macros", macro.value),
-                    innerRadius: .ratio(0.618),
                     angularInset: 1.5
                 )
                 .cornerRadius(4)

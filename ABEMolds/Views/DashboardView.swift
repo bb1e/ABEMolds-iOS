@@ -27,9 +27,10 @@ struct DashboardView: View {
                 
                 Spacer()
                 //homepage stats
-                DonutChart(dataPoints: doughnutData, colors: colors)
+                DonutChart()
                  .frame(width: 200, height: 200)
                  .padding()
+                 .padding(.top)
                  Spacer()
                 LineChart(data: lineChartData, title: "Line Chart")
                     .frame(height: 200)

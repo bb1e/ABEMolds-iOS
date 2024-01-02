@@ -22,32 +22,68 @@ class MoldsViewModel: ObservableObject {
         return molds
     }
     
-    func getDataForContentViewCharts() {
+    //tentar fazer o return dos ultimos 10
+    
+    func partsQualityChartData(molds: [Mold]) -> [ChartData] {
+        //quantity on faulty n non
+        var data: [ChartData] = []
+        var faulty: Int = 0
+        var nonFaulty: Int = 0
         
+        for mold in molds {
+            //data.append(ChartData(name: <#T##String#>, value: <#T##Int#>))
+        }
+        
+        return data
     }
     
-    func partsQualityChartData() {
+    func partsQualityByMoldChartData(molds: [Mold]) -> [ChartData] {
         //quantity on faulty n non
+        var data: [ChartData] = []
+        var faulty: Int = 0
+        var nonFaulty: Int = 0
+        
+        return data
     }
     
-    func partsQualityByMoldChartData() {
-        //quantity on faulty n non
-    }
-    
-    func partsProducedChartData(){
+    func partsProducedChartData(molds: [Mold]) -> [ChartData]{
         //parts produced per day
+        var data: [ChartData] = []
+        
+        for mold in molds {
+            //data.append(ChartData(name: <#T##String#>, value: <#T##Int#>))
+        }
+        
+        return data
     }
     
-    func partsProducedByMoldChartData(){
+    func partsProducedByMoldChartData(mold: Mold) -> [ChartData]{
         //parts produced per day
+        var data: [ChartData] = []
+        
+        let dateFormatter = DateFormatter()
+        
+        for day in mold.days {
+            var daystr = dateFormatter.string(from: day.day)
+            data.append(ChartData(name: daystr, value: day.partsProduced))
+        }
+        print(data)
+        
+        return data
     }
     
-    func totalDownTimeChartData() {
+    func totalDownTimeChartData(molds: [Mold]) -> [ChartData] {
         //downtime per day
+        var data: [ChartData] = []
+        
+        return data
     }
     
-    func moldsInProductionChartData() {
+    func moldsInProductionChartData(molds: [Mold]) -> [ChartData] {
         //current molds in production
+        var data: [ChartData] = []
+        
+        return data
     }
     
     //se a máquina está parada ou não

@@ -13,12 +13,15 @@ struct MoldDetailView: View {
     var item: Mold
     @Environment(\.presentationMode) var presentationMode
     
+    var viewModel = MoldsViewModel()
+    @State var data: [ChartData] = []
+    
     var body: some View {
         NavigationView {
             VStack() {
                 Text(item.projectName)
                     .font(.system(size: 24))
-                    .frame(width: 374, alignment: .topLeading)
+                    .frame(width: 350, alignment: .topLeading)
                 //Spacer()
                 Rectangle()
                 .foregroundColor(.clear)
@@ -70,12 +73,15 @@ struct MoldDetailView: View {
                     }
                     .padding(.horizontal, 20)
                     .padding(.vertical, 14)
-                    .frame(width: 366, alignment: .center)
+                    .frame(width: 360, alignment: .center)
                     .background(.blue)
                     .foregroundColor(.white)
                     .cornerRadius(14)
                 }
                 
+            }
+            .onAppear {
+                data = viewModel.partsProducedByMoldChartData(mold: item)
             }
         }
     }
