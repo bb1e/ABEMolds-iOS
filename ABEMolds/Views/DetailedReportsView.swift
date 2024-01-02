@@ -12,13 +12,13 @@ struct DetailedReportsView: View {
     let lineChartData: [Double] = [10, 25, 67, 30, 20, 40, 35]
     let colors: [Color] = [Color.mint, Color.orange]
     
-    var item: String
+    var item: Mold
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         ScrollView {
             VStack {
-                Text(item)
+                Text(item.projectName)
                     .font(.system(size: 35))
                     .bold()
                     .padding()

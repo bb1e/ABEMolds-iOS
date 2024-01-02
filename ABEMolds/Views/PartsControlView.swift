@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PartsControlView: View {
-    var item: String
+    var item: Mold
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
@@ -17,7 +17,7 @@ struct PartsControlView: View {
               .font(Font.custom("SF Pro", size: 24))
               .foregroundColor(.black)
               .frame(width: 374, alignment: .topLeading)
-            Text(item)
+            Text(item.projectName)
               .font(Font.custom("SF Pro", size: 16))
               .foregroundColor(.black)
               .frame(width: 374, alignment: .topLeading)

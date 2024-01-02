@@ -9,8 +9,9 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var selectedTab: Tab = .house
-    var manager = MoldsManager()
+    var viewModel = MoldsViewModel()
     @State var molds: [Mold] = []
+    @State var chartsData = []
     
     init() {
         UITabBar.appearance().isHidden = true
@@ -21,11 +22,11 @@ struct ContentView: View {
             VStack {
                 Group {
                     if selectedTab == .leaf {
-                        ReportsView()
+                        ReportsView(molds: $molds)
                     } else if selectedTab == .house {
                         DashboardView()
                     } else if selectedTab == .gearshape {
-                        MoldsView()
+                        MoldsView(molds: $molds)
                     }
                 }
                 VStack {
@@ -35,9 +36,9 @@ struct ContentView: View {
             }
         }
         .onAppear {
-            manager.fetchMolds { fetchedMolds in
-                self.molds = fetchedMolds
-                //print(fetchedMolds)
+            Task {
+                molds = viewModel.getAllMolds()
+                print("\n\n\n\n\n", molds)
             }
         }
     }

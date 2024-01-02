@@ -10,13 +10,13 @@ import SwiftUI
 
 struct MoldDetailView: View {
     
-    var item: String
+    var item: Mold
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         NavigationView {
             VStack() {
-                Text(item)
+                Text(item.projectName)
                     .font(.system(size: 24))
                     .frame(width: 374, alignment: .topLeading)
                 //Spacer()
@@ -30,7 +30,7 @@ struct MoldDetailView: View {
                 .frame(width: 393, height: 264.6604919433594)
                 .clipped()
                 )
-                Text("STATUS: Cooling\nCAVITY TEMPERATURE: 123ºC\nMACHINE: A12 ENGEL\nCUSTOMER: LEGO\nPRODUCTION TIME: 3h 42min 12s")
+                Text("STATUS: \(item.currentParameters.stage)\nCAVITY TEMPERATURE: \(item.currentParameters.cavityTempC)\nMACHINE: A12 ENGEL\nCUSTOMER: LEGO\nPRODUCTION TIME: 3h 42min 12s")
                 .font(Font.custom("SF Pro", size: 20))
                 .foregroundColor(.black)
                 .lineSpacing(8)

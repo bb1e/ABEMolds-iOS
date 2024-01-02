@@ -13,12 +13,12 @@ struct MoldsView: View {
     var elements: [String] = ["Lego 3x8 Blocks", "6-Pin Electrical Conector", "Light Switch", "Center Console Bezel"]
     var elements2: [String] = ["4-Pin Electrical Conector", "Radio Volume Knob"]
     var manager = MoldsManager()
-    @State var molds: [Mold] = []
+    @Binding var molds: [Mold]
 
     //@State var selectedItem: Mold
     @State var selectedItem: String = ""
     @State var isSelected: Bool = false
-    @State private var path: [String] = []
+    @State private var path: [Mold] = []
 
     var body: some View {
         NavigationStack(path: $path) {
@@ -39,14 +39,14 @@ struct MoldsView: View {
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .foregroundColor(.gray)
                         List {
-                            ForEach(elements, id: \.self) { item in
-                                NavigationLink(value: item) {
-                                    Text(item)
+                            ForEach(molds, id: \.self) { mold in
+                                NavigationLink(value: mold) {
+                                    Text(mold.projectName)
                                 }
                             }
                         }
-                        .navigationDestination(for: String.self) { item in
-                            MoldDetailView(item: item)
+                        .navigationDestination(for: Mold.self) { mold in
+                            MoldDetailView(item: mold)
                         }                    }
                     .padding()
                     .background(Color.white)
@@ -58,14 +58,14 @@ struct MoldsView: View {
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .foregroundColor(.gray)
                         List {
-                            ForEach(elements2, id: \.self) { item in
-                                NavigationLink(value: item) {
-                                    Text(item)
+                            ForEach(molds, id: \.self) { mold in
+                                NavigationLink(value: mold) {
+                                    Text(mold.projectName)
                                 }
                             }
                         }
-                        .navigationDestination(for: String.self) { item in
-                            MoldDetailView(item: item)
+                        .navigationDestination(for: Mold.self) { mold in
+                            MoldDetailView(item: mold)
                         }
                     }
                     .padding()
@@ -77,12 +77,12 @@ struct MoldsView: View {
                 
             }
             .padding()
-        }
-        /*.onAppear {
-            manager.fetchMolds { fetchedMolds in
-                self.molds = fetchedMolds
-                //print(fetchedMolds)
+            .onAppear {
+                manager.fetchMolds { fetchedMolds in
+                    self.molds = fetchedMolds
+                    //print(fetchedMolds)
+                }
             }
-        }*/
+        }
     //}
 }

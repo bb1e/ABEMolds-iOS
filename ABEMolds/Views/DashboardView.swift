@@ -10,6 +10,7 @@ import SwiftUI
 struct DashboardView: View {
     let doughnutData: [Double] = [30, 70]
     let lineChartData: [Double] = [10, 25, 15, 30, 20, 40, 35]
+    let dates: [Int] = [12, 13, 14, 15, 16, 17, 18]
     let colors: [Color] = [Color.green, Color.yellow]
     
     var manager = MoldsManager()

@@ -12,6 +12,9 @@ struct ReportsView: View {
     let lineChartData: [Double] = [10, 25, 67, 30, 20, 40, 35]
     let colors: [Color] = [Color.mint, Color.orange]
     
+    @Binding var molds: [Mold]
+    //@Binding var chartsData: []
+    
     var body: some View {
         ScrollView {
             VStack {
@@ -23,20 +26,18 @@ struct ReportsView: View {
                 
                 Spacer()
                 //homepage stats
+                PieChart()
+                    .frame(width: 200, height: 200)
+                    .padding()
+                Spacer()
                 LineChart(data: lineChartData, title: "Parts Produced")
                     .frame(height: 200)
                     .padding()
                     .padding(.bottom, 130)
                 Spacer()
-                DonutChart(dataPoints: doughnutData, colors: colors)
-                 .frame(width: 200, height: 200)
-                 .padding()
-                 Spacer()
             }
         }
     }
 }
 
-#Preview {
-    ReportsView()
-}
+

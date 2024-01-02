@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		482F379C2B438DCE00402F39 /* PieChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482F379B2B438DCE00402F39 /* PieChart.swift */; };
+		482F379E2B43945700402F39 /* ChartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482F379D2B43945700402F39 /* ChartData.swift */; };
 		485C645C2B3E54BB00C94F86 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 485C645B2B3E54BB00C94F86 /* GoogleService-Info.plist */; };
 		485C64602B3E575500C94F86 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 485C645F2B3E575500C94F86 /* FirebaseAnalytics */; };
 		485C64622B3E575500C94F86 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 485C64612B3E575500C94F86 /* FirebaseAuth */; };
@@ -70,6 +72,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		482F379B2B438DCE00402F39 /* PieChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChart.swift; sourceTree = "<group>"; };
+		482F379D2B43945700402F39 /* ChartData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartData.swift; sourceTree = "<group>"; };
 		485C645B2B3E54BB00C94F86 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4860ADEE2B3EDF97007AD057 /* Mold.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mold.swift; sourceTree = "<group>"; };
 		4860ADF02B3EDFC6007AD057 /* CurrentParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentParameters.swift; sourceTree = "<group>"; };
@@ -243,6 +247,7 @@
 				48BEA5522B043F3F002B7C67 /* DonutChart.swift */,
 				48BEA5542B043FAC002B7C67 /* LineChart.swift */,
 				489940A22B3A00BE001CFC25 /* CardSectionList.swift */,
+				482F379B2B438DCE00402F39 /* PieChart.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -273,6 +278,7 @@
 				4860AE042B3EE0F3007AD057 /* PackPressure.swift */,
 				4860AE062B3EE107007AD057 /* PackTime.swift */,
 				4860AE082B3EE11C007AD057 /* PlasticTemp.swift */,
+				482F379D2B43945700402F39 /* ChartData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -453,11 +459,13 @@
 				489940A32B3A00BE001CFC25 /* CardSectionList.swift in Sources */,
 				4860ADF12B3EDFC6007AD057 /* CurrentParameters.swift in Sources */,
 				4860AE012B3EE0D2007AD057 /* HoldPressure.swift in Sources */,
+				482F379C2B438DCE00402F39 /* PieChart.swift in Sources */,
 				4860AE0B2B3EE935007AD057 /* MoldsViewModel.swift in Sources */,
 				48F974582B3A638400869F96 /* MoldARView.swift in Sources */,
 				48BEA55A2B04415E002B7C67 /* ReportsView.swift in Sources */,
 				4860ADF72B3EE033007AD057 /* Week.swift in Sources */,
 				48BEA5552B043FAC002B7C67 /* LineChart.swift in Sources */,
+				482F379E2B43945700402F39 /* ChartData.swift in Sources */,
 				4860ADEF2B3EDF97007AD057 /* Mold.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -629,7 +637,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -658,7 +666,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
