@@ -8,13 +8,9 @@
 import SwiftUI
 
 struct DashboardView: View {
-    let doughnutData: [Double] = [30, 70]
-    let lineChartData: [Double] = [10, 25, 15, 30, 20, 40, 35]
-    let dates: [Int] = [12, 13, 14, 15, 16, 17, 18]
-    let colors: [Color] = [Color.green, Color.yellow]
-    
     var manager = MoldsManager()
-    @State var molds: [Mold] = []
+    @Binding var moldsInProdData: [ChartData]
+    @Binding var partsProducedData: [ChartData]
     
     var body: some View {
         ScrollView {
@@ -26,35 +22,25 @@ struct DashboardView: View {
                     .padding(.trailing, 90)
                 
                 Spacer()
-                //homepage stats
                 VStack {
-                    DonutChart()
+                    DonutChart(data: $moldsInProdData, title: "Molds in production")
                         .frame(width: 200, height: 200)
                         .padding()
                         .padding(.top)
                 }
-                .padding()
-                Spacer()
+                .padding(50)
                 VStack {
-                    BarChart()
+                    BarChart(data: $partsProducedData, title: "Parts produced")
                         .frame(height: 200)
                         .padding()
                         .padding(.bottom, 200)
                         .padding(.top)
                 }
-                .padding()
+                .padding(50)
                 Spacer()
             }
         }
-        .onAppear {
-            manager.fetchMolds { fetchedMolds in
-                self.molds = fetchedMolds
-                //print(fetchedMolds)
-            }
-        }
+        .padding(.top, 1)
     }
 }
 
-#Preview {
-    DashboardView()
-}

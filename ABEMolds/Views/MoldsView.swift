@@ -36,6 +36,7 @@ struct MoldsView: View {
                     List {
                         ForEach(molds, id: \.self) { mold in
                             if viewModel.isAvailable(mold: mold){
+                                let _ = print("molds for list: \(molds.count)")
                                 NavigationLink(value: mold) {
                                     Text(mold.projectName)
                                 }
@@ -74,11 +75,5 @@ struct MoldsView: View {
             }
         }
         .padding()
-        .onAppear {
-            manager.fetchMolds { fetchedMolds in
-                self.molds = fetchedMolds
-                //print(fetchedMolds)
-            }
-        }
     }
 }

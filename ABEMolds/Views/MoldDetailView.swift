@@ -14,8 +14,8 @@ struct MoldDetailView: View {
     @Environment(\.presentationMode) var presentationMode
     
     var viewModel = MoldsViewModel()
-    @State var data: [ChartData] = []
-    @State var status: Bool = false
+    @State var totalPartsByMoldPerDayChartsData: [ChartData] = []
+    @State var partsQualityByMoldChartData: [ChartData] = []
     
     var body: some View {
         NavigationView {
@@ -82,9 +82,12 @@ struct MoldDetailView: View {
                 
             }
             .onAppear {
-                data = viewModel.partsProducedByMoldChartData(mold: item)
-                status = viewModel.isAvailable(mold: item)
-                print(status)
+                Task {
+                    self.totalPartsByMoldPerDayChartsData = viewModel.partsProducedByMoldChartData(mold: item)
+                    self.partsQualityByMoldChartData = viewModel.partsQualityByMoldChartData(mold: item)
+                    //print("total parts produced by mold per day: ",totalPartsByMoldPerDayChartsData)
+                    //print("parts quality: ", partsQualityByMoldChartData)
+                }
             }
         }
     }

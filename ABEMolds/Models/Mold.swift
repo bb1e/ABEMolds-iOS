@@ -18,9 +18,10 @@ struct Mold: Codable, Hashable {
     var customerName: String
     var machineName: String
     var totalPartsProduced: Int
+    var totalPartsRejected: Int
     var weeks: [Week]
     
-    init(id: String, currentParameters: CurrentParameters, dateManufactoringEnd: Date, dateManufactoringStart: Date, days: [Day], manufactoringParameters: ManufactoringParameters, projectName: String, customerName: String, machineName: String, totalPartsProduced: Int, weeks: [Week]) {
+    init(id: String, currentParameters: CurrentParameters, dateManufactoringEnd: Date, dateManufactoringStart: Date, days: [Day], manufactoringParameters: ManufactoringParameters, projectName: String, customerName: String, machineName: String, totalPartsProduced: Int, totalPartsRejected: Int, weeks: [Week]) {
         self.id = id
         self.currentParameters = currentParameters
         self.dateManufactoringEnd = dateManufactoringEnd
@@ -31,6 +32,7 @@ struct Mold: Codable, Hashable {
         self.customerName = customerName
         self.machineName = machineName
         self.totalPartsProduced = totalPartsProduced
+        self.totalPartsRejected = totalPartsRejected
         self.weeks = weeks
     }
 }

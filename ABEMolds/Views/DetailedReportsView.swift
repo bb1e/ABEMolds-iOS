@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct DetailedReportsView: View {
-    let doughnutData: [Double] = [75, 25]
-    let lineChartData: [Double] = [10, 25, 67, 30, 20, 40, 35]
-    let colors: [Color] = [Color.mint, Color.orange]
+    @State var faultyPartsData: [ChartData] = []
+    @State var partsProducedData: [ChartData] = []
+    
+    var viewModel = MoldsViewModel()
     
     var item: Mold
     @Environment(\.presentationMode) var presentationMode
@@ -24,22 +25,30 @@ struct DetailedReportsView: View {
                     .padding()
                     .padding(.trailing)
                 
+                VStack {
+                    DonutChart(data: $faultyPartsData, title: "Parts quality")
+                        .frame(width: 200, height: 200)
+                        .padding()
+                }
+                .padding(50)
                 Spacer()
-                //homepage stats
-                BarChart()
-                    .frame(height: 200)
-                    .padding()
-                    .padding(.bottom, 130)
+                VStack {
+                    BarChart(data: $partsProducedData, title: "Parts produced")
+                        .frame(height: 200)
+                        .padding()
+                }
+                .padding(50)
+                Text("Parts produced (Total): 15 000\nParts produced (avg/day): 15 000\nParts produced (avg/week): 15 000\n")
+                .font(Font.custom("SF Pro", size: 20))
+                .foregroundColor(.black)
                 Spacer()
-                DonutChart()
-                 .frame(width: 200, height: 200)
-                 .padding()
-                 Spacer()
+            }
+        }
+        .onAppear {
+            Task {
+                self.faultyPartsData = viewModel.partsQualityByMoldChartData(mold: item)
+                self.partsProducedData = viewModel.partsProducedByMoldChartData(mold: item)
             }
         }
     }
 }
-
-/*#Preview {
-    DetailedReportsView()
-}*/

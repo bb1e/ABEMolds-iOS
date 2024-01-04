@@ -10,8 +10,12 @@ import SwiftUI
 struct ContentView: View {
     @State private var selectedTab: Tab = .house
     var viewModel = MoldsViewModel()
+    var manager = MoldsManager()
     @State var molds: [Mold] = []
-    @State var chartsData = []
+    @State var totalPartsPerDayChartsData: [ChartData] = []
+    @State var partsQualityChartData: [ChartData] = []
+    @State var partsProducedPerWeekChartData: [ChartData] = []
+    @State var moldsInProductionChartData: [ChartData] = []
     
     init() {
         UITabBar.appearance().isHidden = true
@@ -22,9 +26,9 @@ struct ContentView: View {
             VStack {
                 Group {
                     if selectedTab == .leaf {
-                        ReportsView(molds: $molds)
+                        ReportsView(partsProducedData:  $totalPartsPerDayChartsData, faultyPartsData: $partsQualityChartData)
                     } else if selectedTab == .house {
-                        DashboardView()
+                        DashboardView(moldsInProdData: $moldsInProductionChartData, partsProducedData: $partsProducedPerWeekChartData)
                     } else if selectedTab == .gearshape {
                         MoldsView(molds: $molds)
                     }
@@ -37,8 +41,18 @@ struct ContentView: View {
         }
         .onAppear {
             Task {
-                molds = viewModel.getAllMolds()
-                print("\n\n\n\n\n", molds)
+                await manager.fetchMolds { fetchedMolds in
+                    self.molds = fetchedMolds
+                    self.totalPartsPerDayChartsData = viewModel.partsProducedChartData(molds: molds)
+                    self.partsQualityChartData = viewModel.partsQualityChartData(molds: molds)
+                    self.partsProducedPerWeekChartData = viewModel.partsProducedWeekChartData(molds: molds)
+                    self.moldsInProductionChartData = viewModel.moldsInProductionChartData(molds: molds)
+                    //print(molds.count)
+                    //print(totalPartsPerDayChartsData)
+                    //print(partsQualityChartData)
+                    //print(partsProducedPerWeekChartData)
+                    //print(moldsInProductionChartData)
+                }
             }
         }
     }

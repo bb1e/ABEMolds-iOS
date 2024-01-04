@@ -10,9 +10,11 @@ import Foundation
 struct Day: Codable, Hashable {
     var day: Date
     var partsProduced: Int
+    var partsRejected: Int
     
-    init(day: Date, partsProduced: Int) {
+    init(day: Date, partsProduced: Int, partsRejected: Int) {
         self.day = day
         self.partsProduced = partsProduced
+        self.partsRejected = partsRejected
     }
 }

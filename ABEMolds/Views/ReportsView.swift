@@ -8,12 +8,8 @@
 import SwiftUI
 
 struct ReportsView: View {
-    let doughnutData: [Double] = [75, 25]
-    let lineChartData: [Double] = [10, 25, 67, 30, 20, 40, 35]
-    let colors: [Color] = [Color.mint, Color.orange]
-    
-    @Binding var molds: [Mold]
-    //@Binding var chartsData: []
+    @Binding var partsProducedData: [ChartData]
+    @Binding var faultyPartsData: [ChartData]
     
     var body: some View {
         ScrollView {
@@ -25,15 +21,19 @@ struct ReportsView: View {
                     .padding(.trailing, 90)
                 
                 Spacer()
-                //homepage stats
-                PieChart()
-                    .frame(width: 200, height: 200)
-                    .padding()
+                VStack {
+                    BarChart(data: $partsProducedData, title: "Parts produced")
+                        .frame(height: 200)
+                        .padding()
+                }
+                .padding(50)
                 Spacer()
-                BarChart()
-                    .frame(height: 200)
-                    .padding()
-                    .padding(.bottom, 130)
+                VStack {
+                    PieChart(data: $faultyPartsData, title: "Parts quality")
+                        .frame(width: 200, height: 200)
+                        .padding()
+                }
+                .padding(50)
                 Spacer()
             }
         }

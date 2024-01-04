@@ -11,6 +11,9 @@ struct PartsControlView: View {
     var item: Mold
     @Environment(\.presentationMode) var presentationMode
     
+    var manager = MoldsManager()
+    @State var isRejecting: Bool = false
+    
     var body: some View {
         VStack {
             Text("Parts Control")
@@ -30,52 +33,55 @@ struct PartsControlView: View {
               .frame(width: 392, height: 225)
               .background(Color(red: 0.85, green: 0.85, blue: 0.85))
             
-            Text("Injection")
+            Text(item.currentParameters.stage)
               .font(Font.custom("SF Pro", size: 17))
               .foregroundColor(.black)
             Text("Cavity Temperature At Start: 38.3ºC\nAvg. Plastic Temperature: 183.2ºC\nFill Time: 3.43s\nAvg. Injection Pressure: 3.783kg/cm3")
               .font(Font.custom("SF Pro", size: 17))
               .foregroundColor(.black)
             
-            Text("Cooling")
+            /*Text("Cooling")
               .font(Font.custom("SF Pro", size: 17))
               .foregroundColor(.black)
             Text("Cooling Time: 27s\nCavity Temp. At Start: 182.9ºC\nCavity Temp. At End: 47.3ºC")
               .font(Font.custom("SF Pro", size: 17))
-              .foregroundColor(.black)
+              .foregroundColor(.black)*/
             
-            HStack {
-                Button(action: {
-                 //code
-                }) {
-                    HStack (alignment: .center, spacing: 10) {
-                        Image(systemName: "xmark")
-                        Text("Reject")
+            //check still
+            if !item.currentParameters.isAcceptingParts && !isRejecting {
+                HStack {
+                    Button(action: {
+                        manager.updateOverrideUser(moldId: item.id, overrideUser: true)
+                        self.isRejecting = true
+                    }) {
+                        HStack (alignment: .center, spacing: 10) {
+                            Image(systemName: "xmark")
+                            Text("Reject")
+                        }
+                        .foregroundColor(.white)
+                        .padding(.horizontal, 20)
+                        .padding(.vertical, 14)
+                        .frame(width: 175, alignment: .center)
+                        .background(.red)
+                        .cornerRadius(14)
                     }
-                    .foregroundColor(.white)
-                    .padding(.horizontal, 20)
-                    .padding(.vertical, 14)
-                    .frame(width: 175, alignment: .center)
-                    .background(.red)
-                    .cornerRadius(14)
-                }
-                
-                Button(action: {
-                 //code
-                }) {
-                    HStack (alignment: .center, spacing: 10) {
-                        Image(systemName: "checkmark")
-                        Text("Accept")
+                    
+                    Button(action: {
+                        self.isRejecting = false
+                    }) {
+                        HStack (alignment: .center, spacing: 10) {
+                            Image(systemName: "checkmark")
+                            Text("Accept")
+                        }
+                        .foregroundColor(.white)
+                        .padding(.horizontal, 20)
+                        .padding(.vertical, 14)
+                        .frame(width: 175, alignment: .center)
+                        .background(.green)
+                        .cornerRadius(14)
                     }
-                    .foregroundColor(.white)
-                    .padding(.horizontal, 20)
-                    .padding(.vertical, 14)
-                    .frame(width: 175, alignment: .center)
-                    .background(.green)
-                    .cornerRadius(14)
                 }
             }
-            
         }
     }
 }
