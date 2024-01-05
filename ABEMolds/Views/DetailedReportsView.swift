@@ -10,6 +10,8 @@ import SwiftUI
 struct DetailedReportsView: View {
     @State var faultyPartsData: [ChartData] = []
     @State var partsProducedData: [ChartData] = []
+    @State var dayAverage: Double = 0
+    @State var weekAverage: Double = 0
     
     var viewModel = MoldsViewModel()
     
@@ -38,7 +40,7 @@ struct DetailedReportsView: View {
                         .padding()
                 }
                 .padding(50)
-                Text("Parts produced (Total): 15 000\nParts produced (avg/day): 15 000\nParts produced (avg/week): 15 000\n")
+                Text("Parts produced (Total): \(item.totalPartsProduced)\nParts produced (avg/day): \(dayAverage)\nParts produced (avg/week): \(weekAverage)\n")
                 .font(Font.custom("SF Pro", size: 20))
                 .foregroundColor(.black)
                 Spacer()
@@ -48,6 +50,8 @@ struct DetailedReportsView: View {
             Task {
                 self.faultyPartsData = viewModel.partsQualityByMoldChartData(mold: item)
                 self.partsProducedData = viewModel.partsProducedByMoldChartData(mold: item)
+                self.dayAverage = viewModel.averagePartsProducedPerDay(mold: item)
+                self.weekAverage = viewModel.averagePartsProducedPerWeek(mold: item)
             }
         }
     }

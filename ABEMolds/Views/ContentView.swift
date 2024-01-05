@@ -19,7 +19,11 @@ struct ContentView: View {
     
     init() {
         UITabBar.appearance().isHidden = true
+        Task {
+            //manager.observeChangesInMolds()
+        }
     }
+    
     
     var body: some View {
         ZStack {
@@ -54,6 +58,7 @@ struct ContentView: View {
                     //print(moldsInProductionChartData)
                 }
             }
+            viewModel.scheduleNotification(title: "notificação", body: "this is a notif")
         }
     }
 }

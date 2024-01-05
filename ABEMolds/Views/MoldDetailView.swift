@@ -34,13 +34,14 @@ struct MoldDetailView: View {
                 .frame(width: 393, height: 264.6604919433594)
                 .clipped()
                 )
-                Text("STATUS: \(item.currentParameters.stage)\nCAVITY TEMPERATURE: \(item.currentParameters.cavityTempC)\nMACHINE: \(item.machineName)\nCUSTOMER: \(item.customerName)\nPRODUCTION TIME: 3h 42min 12s")
+                Text("STATUS: \(item.currentParameters.stage)\nCAVITY TEMPERATURE: \(item.currentParameters.cavityTempC)\nMACHINE: \(item.machineName)\nCUSTOMER: \(item.customerName)\n")
                 .font(Font.custom("SF Pro", size: 20))
                 .foregroundColor(.black)
                 .lineSpacing(8)
+                .padding(.top, 20)
                 
                 HStack {
-                    NavigationLink (destination: MoldARView()) {
+                    NavigationLink (destination: MoldARView(item: item)) {
                         HStack (alignment: .center, spacing: 10) {
                             Image(systemName: "arkit")
                             Text("AR")
@@ -87,6 +88,7 @@ struct MoldDetailView: View {
                     self.partsQualityByMoldChartData = viewModel.partsQualityByMoldChartData(mold: item)
                     //print("total parts produced by mold per day: ",totalPartsByMoldPerDayChartsData)
                     //print("parts quality: ", partsQualityByMoldChartData)
+                    viewModel.scheduleNotification(title: "ahhhhhhh", body: "ahhhhhhhhhhhhhhhhhhhh")
                 }
             }
         }

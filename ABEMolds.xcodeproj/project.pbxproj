@@ -49,6 +49,8 @@
 		48C29CEA2B4100C5003F1D2E /* NavigationPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C29CE92B4100C5003F1D2E /* NavigationPath.swift */; };
 		48C29CEC2B41014F003F1D2E /* FillTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C29CEB2B41014F003F1D2E /* FillTime.swift */; };
 		48CC42412AFC1DA000C8A4AE /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CC42402AFC1DA000C8A4AE /* CustomTabBar.swift */; };
+		48ED8CA92B48841D00A3981F /* ejection_rotated.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 48ED8CA72B48841D00A3981F /* ejection_rotated.usdz */; };
+		48ED8CAA2B48841D00A3981F /* injection_rotated.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 48ED8CA82B48841D00A3981F /* injection_rotated.usdz */; };
 		48F974562B3A62DE00869F96 /* DetailedReportsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F974552B3A62DE00869F96 /* DetailedReportsView.swift */; };
 		48F974582B3A638400869F96 /* MoldARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F974572B3A638400869F96 /* MoldARView.swift */; };
 		48F9745A2B3A679900869F96 /* PartsControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F974592B3A679900869F96 /* PartsControlView.swift */; };
@@ -111,6 +113,8 @@
 		48C29CE92B4100C5003F1D2E /* NavigationPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationPath.swift; sourceTree = "<group>"; };
 		48C29CEB2B41014F003F1D2E /* FillTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillTime.swift; sourceTree = "<group>"; };
 		48CC42402AFC1DA000C8A4AE /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
+		48ED8CA72B48841D00A3981F /* ejection_rotated.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = ejection_rotated.usdz; sourceTree = "<group>"; };
+		48ED8CA82B48841D00A3981F /* injection_rotated.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = injection_rotated.usdz; sourceTree = "<group>"; };
 		48F974552B3A62DE00869F96 /* DetailedReportsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedReportsView.swift; sourceTree = "<group>"; };
 		48F974572B3A638400869F96 /* MoldARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoldARView.swift; sourceTree = "<group>"; };
 		48F974592B3A679900869F96 /* PartsControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartsControlView.swift; sourceTree = "<group>"; };
@@ -193,6 +197,8 @@
 				48E4C4102AFC2B9E008A5A9C /* Views */,
 				48C1A0CC2AFC182000BF0582 /* ABEMoldsApp.swift */,
 				48C1A0D02AFC182100BF0582 /* Assets.xcassets */,
+				48ED8CA72B48841D00A3981F /* ejection_rotated.usdz */,
+				48ED8CA82B48841D00A3981F /* injection_rotated.usdz */,
 				485C645B2B3E54BB00C94F86 /* GoogleService-Info.plist */,
 				48C1A0D22AFC182100BF0582 /* Preview Content */,
 			);
@@ -407,6 +413,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48ED8CAA2B48841D00A3981F /* injection_rotated.usdz in Resources */,
+				48ED8CA92B48841D00A3981F /* ejection_rotated.usdz in Resources */,
 				48C1A0D42AFC182100BF0582 /* Preview Assets.xcassets in Resources */,
 				48C1A0D12AFC182100BF0582 /* Assets.xcassets in Resources */,
 				485C645C2B3E54BB00C94F86 /* GoogleService-Info.plist in Resources */,

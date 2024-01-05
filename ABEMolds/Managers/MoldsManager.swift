@@ -173,14 +173,12 @@ class MoldsManager: ObservableObject {
        return daysSnapshot.compactMap { daySnapshot -> Day? in
            let dayData = daySnapshot.value as? [String: Any]
            let dayId = daySnapshot.key
-
-           guard let partsProduced = dayData?["partsProduced"] as? Int else {
-               return nil
-           }
-           guard let partsRejected = dayData?["partsRejected"] as? Int else {
-               return nil
-           }
-
+           //print(daySnapshot)
+           let partsProduced = dayData?["partsProduced"] as? Int ?? 0
+           //print(partsProduced)
+           let partsRejected = dayData?["partsRejected"] as? Int ?? 0
+           print(partsRejected)
+           //print(dayId)
            if let day = dateFormatter.date(from: dayId) { // Ensure dayId can be converted to a Date
                return Day(day: day, partsProduced: partsProduced, partsRejected: partsRejected)
            } else {
@@ -212,4 +210,24 @@ class MoldsManager: ObservableObject {
         }
     }
 
+    func observeChangesInMolds() async -> [Mold] {
+       let ref = Database.database().reference().child("molds")
+        var molds: [Mold] = []
+        var change: Bool = false
+        
+       ref.observe(.childChanged, with: { snapshot in
+           print("A child has changed: \(snapshot)")
+           change = true
+       })
+        
+        if change {
+                await self.fetchMolds { result in
+                    molds = result
+                }
+            
+        } else {
+            change = false
+        }
+        return molds
+    }
 }

@@ -36,16 +36,10 @@ struct PartsControlView: View {
             Text(item.currentParameters.stage)
               .font(Font.custom("SF Pro", size: 17))
               .foregroundColor(.black)
-            Text("Cavity Temperature At Start: 38.3ºC\nAvg. Plastic Temperature: 183.2ºC\nFill Time: 3.43s\nAvg. Injection Pressure: 3.783kg/cm3")
+            //change this to show related to the state
+            Text("Cavity Temperature: \(item.currentParameters.cavityTempC)ºC\nPlastic Temperature: \(item.currentParameters.plasticTempC)ºC\nFill Time: 3.43s\nAvg. Injection Pressure: 3.783kg/cm3")
               .font(Font.custom("SF Pro", size: 17))
               .foregroundColor(.black)
-            
-            /*Text("Cooling")
-              .font(Font.custom("SF Pro", size: 17))
-              .foregroundColor(.black)
-            Text("Cooling Time: 27s\nCavity Temp. At Start: 182.9ºC\nCavity Temp. At End: 47.3ºC")
-              .font(Font.custom("SF Pro", size: 17))
-              .foregroundColor(.black)*/
             
             //check still
             if !item.currentParameters.isAcceptingParts && !isRejecting {
@@ -67,6 +61,7 @@ struct PartsControlView: View {
                     }
                     
                     Button(action: {
+                        manager.updateOverrideUser(moldId: item.id, overrideUser: false)
                         self.isRejecting = false
                     }) {
                         HStack (alignment: .center, spacing: 10) {

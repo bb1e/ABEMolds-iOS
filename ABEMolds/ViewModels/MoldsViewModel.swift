@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UserNotifications
 
 class MoldsViewModel: ObservableObject {
     @Published var molds = [Mold]()
@@ -69,20 +70,35 @@ class MoldsViewModel: ObservableObject {
 
     func allUniqueDays(molds: [Mold]) -> [String] {
         var uniqueDays: [String] = []
+        var days: [Day] = []
       let dateFormatter = DateFormatter()
       dateFormatter.dateFormat = "dd-MM"
 
       for mold in molds {
-          //print(mold)
+          //print(mold.days)
           for day in mold.days {
-              print("object day: ", day)
+              //print("this is mold: ", mold.id)
+              //print("this is day: ", day.day)
               let dayStr = dateFormatter.string(from: day.day)
               //print("this is a day: ", dayStr)
-              if !uniqueDays.contains(dayStr) {
+              if uniqueDays.contains(dayStr) {
+                
+              }
+              else {
                   uniqueDays.append(dayStr)
               }
           }
       }
+        
+        /*let sortedUniqueDays = uniqueDays.sorted()
+        var finalDays: [String] = []
+        
+        dateFormatter.dateFormat = "dd-MM"
+        
+        for day in finalDays {
+            var str = day.removeLast(5)
+            finalDays.append(str)
+        }*/
 
       return Array(uniqueDays)
     }
@@ -105,27 +121,34 @@ class MoldsViewModel: ObservableObject {
     }
     
     func partsProducedWeekChartData(molds: [Mold]) -> [ChartData] {
-     var weeklyTotals: [Int: Int] = [:]
+       var weeklyTotals: [Int: Int] = [:]
 
-     for mold in molds {
-         for week in mold.weeks {
-             let weekNumber = week.week // Assuming Week struct has a 'number' property
-             let partsProducedInWeek = week.partsProduced // Assuming Week struct has a 'partsProduced' property
+       for mold in molds {
+           for week in mold.weeks {
+               let weekNumber = week.week // Assuming Week struct has a 'number' property
+               let partsProducedInWeek = week.partsProduced // Assuming Week struct has a 'partsProduced' property
 
-             if let existingTotal = weeklyTotals[weekNumber] {
-                 weeklyTotals[weekNumber] = existingTotal + partsProducedInWeek
-             } else {
-                 weeklyTotals[weekNumber] = partsProducedInWeek
-             }
-         }
-     }
+               if let existingTotal = weeklyTotals[weekNumber] {
+                   weeklyTotals[weekNumber] = existingTotal + partsProducedInWeek
+               } else {
+                   weeklyTotals[weekNumber] = partsProducedInWeek
+               }
+           }
+       }
 
-     let chartData = weeklyTotals.map { weekNumber, total in
-         ChartData(name: "Week \(weekNumber)", value: total)
-     }
+       // Sort the weeklyTotals dictionary by its keys (week numbers) in ascending order
+       let sortedWeeklyTotals = weeklyTotals.sorted(by: <)
 
-     return chartData
+       // Get the last 8 elements
+       let lastEightWeeks = Array(sortedWeeklyTotals.suffix(8))
+
+       let chartData = lastEightWeeks.map { weekNumber, total in
+           ChartData(name: "Week \(weekNumber)", value: total)
+       }
+
+       return chartData
     }
+
 
 
     
@@ -163,5 +186,50 @@ class MoldsViewModel: ObservableObject {
             status = false
         }
         return status
+    }
+    
+    func averagePartsProducedPerDay(mold: Mold) -> Double {
+        var sum = 0
+        
+        for day in mold.days {
+            sum += day.partsProduced
+        }
+        
+        var average: Double = Double(sum) / Double(mold.days.count)
+        
+        return average
+    }
+    
+    func averagePartsProducedPerWeek(mold: Mold) -> Double {
+        var sum = 0
+        
+        for week in mold.weeks {
+            sum += week.partsProduced
+        }
+        
+        var average: Double = Double(sum) / Double(mold.weeks.count)
+        
+        return average
+    }
+    
+    func scheduleNotification(title: String, body: String) {
+       // Request permission to send notifications
+       UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { success, error in
+           /*if success {
+               // Define the content of the notification
+               let content = UNMutableNotificationContent()
+               content.title = title
+               content.body = body
+
+               // Define the trigger for the notification
+               let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+
+               // Create the notification request
+               let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+
+               // Add the notification request to the User Notification Center
+               UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+           }*/
+       }
     }
 }
