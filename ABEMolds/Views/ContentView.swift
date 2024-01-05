@@ -17,11 +17,10 @@ struct ContentView: View {
     @State var partsProducedPerWeekChartData: [ChartData] = []
     @State var moldsInProductionChartData: [ChartData] = []
     @State var changed: Bool = false
+    @State var isalert = true
     
     init() {
         UITabBar.appearance().isHidden = true
-        changed = manager.observeChangesInMolds()
-
     }
     
     
@@ -38,7 +37,6 @@ struct ContentView: View {
                     }
                 }
                 VStack {
-                    //Spacer()
                     CustomTabBar(selectedTab: $selectedTab)
                 }
             }
@@ -51,29 +49,37 @@ struct ContentView: View {
                     self.partsQualityChartData = viewModel.partsQualityChartData(molds: molds)
                     self.partsProducedPerWeekChartData = viewModel.partsProducedWeekChartData(molds: molds)
                     self.moldsInProductionChartData = viewModel.moldsInProductionChartData(molds: molds)
-                    //print(molds.count)
-                    //print(totalPartsPerDayChartsData)
-                    //print(partsQualityChartData)
-                    //print(partsProducedPerWeekChartData)
-                    //print(moldsInProductionChartData)
                 }
             }
-            viewModel.scheduleNotification(title: "notificação", body: "this is a notif")
         }
-        .onChange(of: changed) { oldValue, newValue in
+        .onChange(of: molds) { oldValue, newValue in
             Task {
-                await manager.fetchMolds { fetchedMolds in
-                    self.molds = fetchedMolds
                     self.totalPartsPerDayChartsData = viewModel.partsProducedChartData(molds: molds)
                     self.partsQualityChartData = viewModel.partsQualityChartData(molds: molds)
                     self.partsProducedPerWeekChartData = viewModel.partsProducedWeekChartData(molds: molds)
                     self.moldsInProductionChartData = viewModel.moldsInProductionChartData(molds: molds)
-                    print(molds.first?.currentParameters.overrideUser)
-                    //print(molds.count)
-                    //print(totalPartsPerDayChartsData)
-                    //print(partsQualityChartData)
-                    //print(partsProducedPerWeekChartData)
-                    //print(moldsInProductionChartData)
+            }
+        }
+        /*.alert(isPresented: $isalert) {
+            Alert(
+                title: Text("Faulty part!"),
+                message: Text("Do you want to proceed?"),
+                primaryButton: .destructive(Text("Dismiss")) {
+                    // Handle dismiss action here
+                },
+                secondaryButton: .default(Text("Take Me There")) {
+                    // Handle "Take Me There" action here
+                    
+                }
+            )
+        }*/
+        .onReceive(Timer.publish(every: 10, on: .main, in: .common).autoconnect()) { _ in
+            Task {
+                manager.observeChangesInMolds { result in
+                    self.molds = result
+                    /*manager.observeIsAcceptingParts(moldId: "1000") { result in
+                     
+                     }*/
                 }
             }
         }

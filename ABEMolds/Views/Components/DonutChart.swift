@@ -12,6 +12,7 @@ import Charts
 struct DonutChart: View {
     @Binding var data: [ChartData]
     var title: String
+    var description: String
 
     var body: some View {
         VStack {
@@ -20,6 +21,10 @@ struct DonutChart: View {
                 .fontWeight(.semibold)
                 .frame(alignment: .leading)
             VStack(alignment: .leading) {
+                Text(description)
+                 .font(.footnote)
+                 .foregroundStyle(.gray)
+                
                 Chart(data, id: \.name) { macro in
                     SectorMark(
                         angle: .value("macros", macro.value),

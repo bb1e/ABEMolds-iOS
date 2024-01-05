@@ -13,7 +13,6 @@ class MoldsViewModel: ObservableObject {
     var manager = MoldsManager()
     
     func partsQualityChartData(molds: [Mold]) -> [ChartData] {
-        //quantity on faulty n non
         var data: [ChartData] = []
         var faulty: Int = 0
         var nonFaulty: Int = 0
@@ -30,7 +29,6 @@ class MoldsViewModel: ObservableObject {
     }
     
     func partsQualityByMoldChartData(mold: Mold) -> [ChartData] {
-        //quantity on faulty n non
         var data: [ChartData] = []
         var faulty = mold.totalPartsRejected
         var nonFaulty = mold.totalPartsProduced
@@ -45,10 +43,9 @@ class MoldsViewModel: ObservableObject {
     func partsProducedChartData(molds: [Mold]) -> [ChartData] {
     var data: [ChartData] = []
       let uniqueDays = allUniqueDays(molds: molds)
-        //print("days string: ", uniqueDays)
       var dailyTotals: Int
       let dateFormatter = DateFormatter()
-      dateFormatter.dateFormat = "dd-MM" // Format the date as "dd-MM"
+      dateFormatter.dateFormat = "dd-MM"
 
       for day in uniqueDays {
           dailyTotals = 0
@@ -60,11 +57,12 @@ class MoldsViewModel: ObservableObject {
                   }
               }
           }
-          //print("day: \(day), total parts: \(dailyTotals)")
           data.append(ChartData(name: day, value: dailyTotals))
       }
+        
+        let lastFiveDays = Array(data.suffix(5))
 
-      return data
+      return lastFiveDays
     }
 
 
@@ -75,12 +73,8 @@ class MoldsViewModel: ObservableObject {
       dateFormatter.dateFormat = "dd-MM"
 
       for mold in molds {
-          //print(mold.days)
           for day in mold.days {
-              //print("this is mold: ", mold.id)
-              //print("this is day: ", day.day)
               let dayStr = dateFormatter.string(from: day.day)
-              //print("this is a day: ", dayStr)
               if uniqueDays.contains(dayStr) {
                 
               }
@@ -89,35 +83,24 @@ class MoldsViewModel: ObservableObject {
               }
           }
       }
-        
-        /*let sortedUniqueDays = uniqueDays.sorted()
-        var finalDays: [String] = []
-        
-        dateFormatter.dateFormat = "dd-MM"
-        
-        for day in finalDays {
-            var str = day.removeLast(5)
-            finalDays.append(str)
-        }*/
-
       return Array(uniqueDays)
     }
 
     
     func partsProducedByMoldChartData(mold: Mold) -> [ChartData]{
-        //parts produced per day
         var data: [ChartData] = []
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM-dd"
         
         for day in mold.days {
-            //print("\n\n\n\n see days: \(day) \n\n\n\\n")
             var daystr = dateFormatter.string(from: day.day)
             data.append(ChartData(name: daystr, value: day.partsProduced))
         }
         
-        return data
+        let lastFiveDays = Array(data.suffix(5))
+        
+        return lastFiveDays
     }
     
     func partsProducedWeekChartData(molds: [Mold]) -> [ChartData] {
@@ -125,8 +108,8 @@ class MoldsViewModel: ObservableObject {
 
        for mold in molds {
            for week in mold.weeks {
-               let weekNumber = week.week // Assuming Week struct has a 'number' property
-               let partsProducedInWeek = week.partsProduced // Assuming Week struct has a 'partsProduced' property
+               let weekNumber = week.week
+               let partsProducedInWeek = week.partsProduced
 
                if let existingTotal = weeklyTotals[weekNumber] {
                    weeklyTotals[weekNumber] = existingTotal + partsProducedInWeek
@@ -136,10 +119,8 @@ class MoldsViewModel: ObservableObject {
            }
        }
 
-       // Sort the weeklyTotals dictionary by its keys (week numbers) in ascending order
        let sortedWeeklyTotals = weeklyTotals.sorted(by: <)
 
-       // Get the last 8 elements
        let lastEightWeeks = Array(sortedWeeklyTotals.suffix(8))
 
        let chartData = lastEightWeeks.map { weekNumber, total in
@@ -153,7 +134,6 @@ class MoldsViewModel: ObservableObject {
 
     
     func moldsInProductionChartData(molds: [Mold]) -> [ChartData] {
-        //current molds in production
         var data: [ChartData] = []
         var on: Int = 0
         var off: Int = 0
@@ -212,24 +192,15 @@ class MoldsViewModel: ObservableObject {
         return average
     }
     
-    func scheduleNotification(title: String, body: String) {
-       // Request permission to send notifications
-       UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { success, error in
-           /*if success {
-               // Define the content of the notification
-               let content = UNMutableNotificationContent()
-               content.title = title
-               content.body = body
-
-               // Define the trigger for the notification
-               let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
-
-               // Create the notification request
-               let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
-
-               // Add the notification request to the User Notification Center
-               UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
-           }*/
-       }
-    }
+    /*func checkIfAcceptingParts(molds: [Mold]) -> Bool {
+        for mold in molds {
+            manager.observeIsAcceptingParts(moldId: mold.id) { result in
+                if result == true {
+                    return
+                }
+            }
+        }
+    }*/
+    
+    
 }

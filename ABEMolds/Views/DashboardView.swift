@@ -23,14 +23,14 @@ struct DashboardView: View {
                 
                 Spacer()
                 VStack {
-                    DonutChart(data: $moldsInProdData, title: "Molds in production")
+                    DonutChart(data: $moldsInProdData, title: "Molds in production",description: "Number of molds in production")
                         .frame(width: 200, height: 200)
                         .padding()
                         .padding(.top)
                 }
                 .padding(50)
                 VStack {
-                    BarChart(data: $partsProducedData, title: "Parts produced")
+                    BarChart(data: $partsProducedData, title: "Parts produced", description: "Number of parts produced per week")
                         .frame(height: 200)
                         .padding()
                         .padding(.bottom, 200)

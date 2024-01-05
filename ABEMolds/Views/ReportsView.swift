@@ -22,14 +22,14 @@ struct ReportsView: View {
                 
                 Spacer()
                 VStack {
-                    BarChart(data: $partsProducedData, title: "Parts produced")
+                    BarChart(data: $partsProducedData, title: "Parts produced", description: "Number of parts produced per day")
                         .frame(height: 200)
                         .padding()
                 }
                 .padding(50)
                 Spacer()
                 VStack {
-                    PieChart(data: $faultyPartsData, title: "Parts quality")
+                    PieChart(data: $faultyPartsData, title: "Parts quality", description: "Number of parts with quality")
                         .frame(width: 200, height: 200)
                         .padding()
                 }
@@ -37,6 +37,7 @@ struct ReportsView: View {
                 Spacer()
             }
         }
+        .padding(.top, 1)
     }
 }
 

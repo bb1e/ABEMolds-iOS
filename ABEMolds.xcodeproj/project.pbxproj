@@ -31,6 +31,7 @@
 		4860AE092B3EE11C007AD057 /* PlasticTemp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4860AE082B3EE11C007AD057 /* PlasticTemp.swift */; };
 		4860AE0B2B3EE935007AD057 /* MoldsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4860AE0A2B3EE935007AD057 /* MoldsViewModel.swift */; };
 		4860AE0D2B3EE945007AD057 /* MoldsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4860AE0C2B3EE945007AD057 /* MoldsManager.swift */; };
+		487F4E242B48B0FA0002701B /* PopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487F4E232B48B0FA0002701B /* PopupView.swift */; };
 		489940A32B3A00BE001CFC25 /* CardSectionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489940A22B3A00BE001CFC25 /* CardSectionList.swift */; };
 		489940A52B3A045D001CFC25 /* MoldDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489940A42B3A045D001CFC25 /* MoldDetailView.swift */; };
 		48BEA5532B043F3F002B7C67 /* DonutChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BEA5522B043F3F002B7C67 /* DonutChart.swift */; };
@@ -93,6 +94,8 @@
 		4860AE082B3EE11C007AD057 /* PlasticTemp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlasticTemp.swift; sourceTree = "<group>"; };
 		4860AE0A2B3EE935007AD057 /* MoldsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoldsViewModel.swift; sourceTree = "<group>"; };
 		4860AE0C2B3EE945007AD057 /* MoldsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoldsManager.swift; sourceTree = "<group>"; };
+		487F4E222B48AF550002701B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		487F4E232B48B0FA0002701B /* PopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupView.swift; sourceTree = "<group>"; };
 		489940A22B3A00BE001CFC25 /* CardSectionList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSectionList.swift; sourceTree = "<group>"; };
 		489940A42B3A045D001CFC25 /* MoldDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoldDetailView.swift; sourceTree = "<group>"; };
 		48BEA5522B043F3F002B7C67 /* DonutChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonutChart.swift; sourceTree = "<group>"; };
@@ -190,6 +193,7 @@
 		48C1A0CB2AFC182000BF0582 /* ABEMolds */ = {
 			isa = PBXGroup;
 			children = (
+				487F4E222B48AF550002701B /* Info.plist */,
 				485C645A2B3CC02A00C94F86 /* Managers */,
 				48E4C4142AFC2C24008A5A9C /* Helpers */,
 				48E4C4132AFC2C07008A5A9C /* Models */,
@@ -254,6 +258,7 @@
 				48BEA5542B043FAC002B7C67 /* BarChart.swift */,
 				489940A22B3A00BE001CFC25 /* CardSectionList.swift */,
 				482F379B2B438DCE00402F39 /* PieChart.swift */,
+				487F4E232B48B0FA0002701B /* PopupView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -469,6 +474,7 @@
 				4860AE012B3EE0D2007AD057 /* HoldPressure.swift in Sources */,
 				482F379C2B438DCE00402F39 /* PieChart.swift in Sources */,
 				4860AE0B2B3EE935007AD057 /* MoldsViewModel.swift in Sources */,
+				487F4E242B48B0FA0002701B /* PopupView.swift in Sources */,
 				48F974582B3A638400869F96 /* MoldARView.swift in Sources */,
 				48BEA55A2B04415E002B7C67 /* ReportsView.swift in Sources */,
 				4860ADF72B3EE033007AD057 /* Week.swift in Sources */,
@@ -641,6 +647,7 @@
 				DEVELOPMENT_TEAM = VVDM44X8GF;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ABEMolds/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "The app requires";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -671,6 +678,7 @@
 				DEVELOPMENT_TEAM = VVDM44X8GF;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ABEMolds/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "The app requires";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

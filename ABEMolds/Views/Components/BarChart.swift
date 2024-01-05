@@ -12,6 +12,7 @@ import Charts
 struct BarChart: View {
     @Binding var data: [ChartData]
     var title: String
+    var description: String
 
     var body: some View {
         VStack {
@@ -20,9 +21,9 @@ struct BarChart: View {
                 .fontWeight(.semibold)
                 .frame(alignment: .leading)
             VStack(alignment: .leading) {
-                /*Text("")
+                Text(description)
                  .font(.footnote)
-                 .foregroundStyle(.gray)*/
+                 .foregroundStyle(.gray)
                 
                 Chart(data, id: \.name) { macro in
                     BarMark(

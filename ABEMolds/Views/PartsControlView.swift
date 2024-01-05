@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct PartsControlView: View {
-    var item: Mold
+    @State var item: Mold
     @Environment(\.presentationMode) var presentationMode
     
     var manager = MoldsManager()
-    @State var isRejecting: Bool = false
+    @State var didTap: Bool = false
     
     var body: some View {
         VStack {
@@ -24,10 +24,8 @@ struct PartsControlView: View {
               .font(Font.custom("SF Pro", size: 16))
               .foregroundColor(.black)
               .frame(width: 350, alignment: .topLeading)
-            Text("31/10/2023 8:23")
-              .font(Font.custom("SF Pro", size: 24))
-              .foregroundColor(.black)
             Spacer()
+
             Rectangle()
               .foregroundColor(.clear)
               .frame(width: 392, height: 225)
@@ -36,17 +34,18 @@ struct PartsControlView: View {
             Text(item.currentParameters.stage)
               .font(Font.custom("SF Pro", size: 17))
               .foregroundColor(.black)
-            //change this to show related to the state
-            Text("Cavity Temperature: \(item.currentParameters.cavityTempC)ºC\nPlastic Temperature: \(item.currentParameters.plasticTempC)ºC\nFill Time: 3.43s\nAvg. Injection Pressure: 3.783kg/cm3")
+              .padding(.top, 30)
+            Text("Cavity Temperature: \(String(format: "%.2f", item.currentParameters.cavityTempC))ºC\nPlastic Temperature: \(String(format: "%.2f",item.currentParameters.plasticTempC))ºC\nFlow: \(String(format: "%.2f",item.currentParameters.injectionFlow))\nAvg. Pressure: \(String(format: "%.2f",item.currentParameters.pressure))kg/cm3")
               .font(Font.custom("SF Pro", size: 17))
               .foregroundColor(.black)
+              .padding(.top, 7)
             Spacer()
             //check still
-            if !item.currentParameters.isAcceptingParts && !isRejecting {
+            if !item.currentParameters.isAcceptingParts && !didTap {
                 HStack {
                     Button(action: {
                         manager.updateOverrideUser(moldId: item.id, overrideUser: true)
-                        self.isRejecting = true
+                        self.didTap = true
                     }) {
                         HStack (alignment: .center, spacing: 10) {
                             Image(systemName: "xmark")
@@ -62,7 +61,7 @@ struct PartsControlView: View {
                     
                     Button(action: {
                         manager.updateOverrideUser(moldId: item.id, overrideUser: false)
-                        self.isRejecting = false
+                        self.didTap = true
                     }) {
                         HStack (alignment: .center, spacing: 10) {
                             Image(systemName: "checkmark")

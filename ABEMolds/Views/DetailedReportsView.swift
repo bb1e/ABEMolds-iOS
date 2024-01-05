@@ -15,7 +15,7 @@ struct DetailedReportsView: View {
     
     var viewModel = MoldsViewModel()
     
-    var item: Mold
+    @State var item: Mold
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
@@ -28,19 +28,19 @@ struct DetailedReportsView: View {
                     .padding(.trailing)
                 
                 VStack {
-                    DonutChart(data: $faultyPartsData, title: "Parts quality")
+                    DonutChart(data: $faultyPartsData, title: "Parts quality", description: "Number of parts with quality")
                         .frame(width: 200, height: 200)
                         .padding()
                 }
                 .padding(50)
                 Spacer()
                 VStack {
-                    BarChart(data: $partsProducedData, title: "Parts produced")
+                    BarChart(data: $partsProducedData, title: "Parts produced", description: "Number of parts produced per day")
                         .frame(height: 200)
                         .padding()
                 }
                 .padding(50)
-                Text("Parts produced (Total): \(item.totalPartsProduced)\nParts produced (avg/day): \(dayAverage)\nParts produced (avg/week): \(weekAverage)\n")
+                Text("Parts produced (Total): \(item.totalPartsProduced)\nParts produced (avg/day): \(Int(dayAverage))\nParts produced (avg/week): \(Int(weekAverage))\n")
                 .font(Font.custom("SF Pro", size: 20))
                 .foregroundColor(.black)
                 Spacer()

@@ -42,7 +42,3 @@ struct CardSectionList: View {
         }
     }
 }
-
-/*#Preview {
-    CardSectionList(elements: ["element 1", "element 2", "element 3"])
-}*/

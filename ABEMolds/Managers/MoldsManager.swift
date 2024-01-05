@@ -10,12 +10,9 @@ import Firebase
 import FirebaseFirestore
 
 class MoldsManager: ObservableObject {
-    //static let shared = MoldsManager()
     var db = Database.database().reference()
     
     @Published var molds = [Mold]()
-    
-    //init() {}
     
     func fetchMolds(completion: @escaping ([Mold]) -> Void) async {
         Task {
@@ -85,7 +82,6 @@ class MoldsManager: ObservableObject {
                         let machineName = moldData["machineName"] as? String ?? ""
                         
                         if let manufacturingParameters = moldData["manufacturingParameters"] as? [String: Any]{
-                            //print("manufacturing parameters: \(manufacturingParameters)")
                             if let cavityTemp = manufacturingParameters["cavityTemp"] as? [String: Any] {
                                 cavityTempMax = cavityTemp["max"] as? Double ?? 0.0
                             }
@@ -137,16 +133,13 @@ class MoldsManager: ObservableObject {
                         weeks = self.parseWeeks(moldSnapshot: moldSnapshot)
                                 
                         let finalMold = Mold(id: moldId, currentParameters: CurrentParameters(cavityTempC: currentCavityTemp, injectionFlow: currentInjectionFlow, isAcceptingParts: currentIsAcceptingParts, isProducing: currentIsProducing, overrideUser: currentOverrideUser, plasticTempC: currentPlasticTemp, pressure: currentPressure, stage: currentStage), dateManufactoringEnd: finalManufacturingEndDate, dateManufactoringStart: finalManufacturingStartDate, days: days, manufactoringParameters: ManufactoringParameters(cavityTemp: CavityTemp(max: cavityTempMax), coolingTemp: CoolingTemp(max: coolingTempMax, min: coolingTempMin), coolingTime: CoolingTime(max: coolingTimeMax, min: coolingTimeMin), fillPressure: FillPressure(max: fillPressureMax, min: fillPressureMin), fillTime: FillTime(max: fillTimeMax, min: fillTimeMin), holdPressure: HoldPressure(max: holdPressureMax, min: holdPressureMin), injectionFlow: InjectionFlow(max: injectionFlowMax, min: injectionFlowMin), packPressure: PackPressure(max: packPressureMax, min: packPressureMin), packTime: PackTime(max: packTimeMax, min: packTimeMin), plasticTemp: PlasticTemp(max: plasticTempMax, min: plasticTempMin)), projectName: projectName, customerName: customerName, machineName: machineName, totalPartsProduced: totalPartsProduced, totalPartsRejected: totalPartsRejected, weeks: weeks)
-                                //print("final mold: \(finalMold)")
+
                                 molds.append(finalMold)
-                                //print("completion: \(molds)")
                                 completion(molds)
                     }
                 }
                 self.molds = molds
             })
-            //completion(molds)
-            //print("\n\n\n\n\n\nthis is all molds at the end of func: \(self.molds)")
         }
     }
     
@@ -164,21 +157,19 @@ class MoldsManager: ObservableObject {
     
     private func parseDays(moldSnapshot: DataSnapshot) -> [Day] {
        let dateFormatter = DateFormatter()
-       dateFormatter.dateFormat = "MMddyyyy" // Ensure this matches the format of your dayId
+       dateFormatter.dateFormat = "MMddyyyy"
 
        guard let daysSnapshot = moldSnapshot.childSnapshot(forPath: "days").children.allObjects as? [DataSnapshot] else {
            return []
        }
 
        return daysSnapshot.compactMap { daySnapshot -> Day? in
+           
            let dayData = daySnapshot.value as? [String: Any]
            let dayId = daySnapshot.key
-           //print(daySnapshot)
            let partsProduced = dayData?["partsProduced"] as? Int ?? 0
-           //print(partsProduced)
            let partsRejected = dayData?["partsRejected"] as? Int ?? 0
-           print(partsRejected)
-           //print(dayId)
+
            if let day = dateFormatter.date(from: dayId) { // Ensure dayId can be converted to a Date
                return Day(day: day, partsProduced: partsProduced, partsRejected: partsRejected)
            } else {
@@ -210,14 +201,25 @@ class MoldsManager: ObservableObject {
         }
     }
 
-    func observeChangesInMolds() -> Bool {
+    func observeChangesInMolds(completion: @escaping ([Mold]) -> Void) {
        let ref = Database.database().reference().child("molds")
-        var change: Bool = false
+
+       ref.observe(.childChanged, with: { snapshot in
+           Task {
+               await self.fetchMolds { result in
+                   completion(result)
+               }
+           }
+       })
+    }
+    
+    func observeIsAcceptingParts(moldId: String, completion: @escaping (Bool) -> Void) {
+        let ref = Database.database().reference().child("molds").child(moldId).child("currentParameters").child("isAcceptingParts")
+       var changed = false
         
        ref.observe(.childChanged, with: { snapshot in
-           print("A child has changed: \(snapshot)")
-           change = true
+           var changed = true
        })
-        return change
     }
+
 }

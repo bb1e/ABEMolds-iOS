@@ -10,7 +10,7 @@ import SwiftUI
 
 struct MoldDetailView: View {
     
-    var item: Mold
+    @State var item: Mold
     @Environment(\.presentationMode) var presentationMode
     
     var viewModel = MoldsViewModel()
@@ -23,7 +23,6 @@ struct MoldDetailView: View {
                 Text(item.projectName)
                     .font(.system(size: 24))
                     .frame(width: 350, alignment: .topLeading)
-                //Spacer()
                 Rectangle()
                 .foregroundColor(.clear)
                 .frame(width: 393, height: 264.66049)
@@ -34,7 +33,7 @@ struct MoldDetailView: View {
                 .frame(width: 393, height: 264.6604919433594)
                 .clipped()
                 )
-                Text("STATUS: \(item.currentParameters.stage)\nCAVITY TEMPERATURE: \(item.currentParameters.cavityTempC)\nMACHINE: \(item.machineName)\nCUSTOMER: \(item.customerName)\n")
+                Text("STATUS: \(item.currentParameters.stage)\nCAVITY TEMPERATURE: \(String(format: "%.2f",item.currentParameters.cavityTempC))ºC\nMACHINE: \(item.machineName)\nCUSTOMER: \(item.customerName)\n")
                 .font(Font.custom("SF Pro", size: 20))
                 .foregroundColor(.black)
                 .lineSpacing(8)
@@ -80,15 +79,11 @@ struct MoldDetailView: View {
                     .foregroundColor(.white)
                     .cornerRadius(14)
                 }
-                
             }
             .onAppear {
                 Task {
                     self.totalPartsByMoldPerDayChartsData = viewModel.partsProducedByMoldChartData(mold: item)
                     self.partsQualityByMoldChartData = viewModel.partsQualityByMoldChartData(mold: item)
-                    //print("total parts produced by mold per day: ",totalPartsByMoldPerDayChartsData)
-                    //print("parts quality: ", partsQualityByMoldChartData)
-                    viewModel.scheduleNotification(title: "ahhhhhhh", body: "ahhhhhhhhhhhhhhhhhhhh")
                 }
             }
         }
