@@ -166,11 +166,19 @@ struct ARViewContainer: UIViewRepresentable {
         
         arView.addCoaching()
         
+        
         // Start AR session
         let session = arView.session
         let config = ARWorldTrackingConfiguration()
         config.planeDetection = [.horizontal]
         session.run(config)
+        
+        // Add coaching overlay
+                let coachingOverlay = ARCoachingOverlayView()
+                coachingOverlay.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+                coachingOverlay.session = session
+                coachingOverlay.goal = .horizontalPlane
+                arView.addSubview(coachingOverlay)
         
         let material = createMaterial()
         //material.specular = .init(floatLiteral: 0.8)

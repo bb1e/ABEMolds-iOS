@@ -210,24 +210,14 @@ class MoldsManager: ObservableObject {
         }
     }
 
-    func observeChangesInMolds() async -> [Mold] {
+    func observeChangesInMolds() -> Bool {
        let ref = Database.database().reference().child("molds")
-        var molds: [Mold] = []
         var change: Bool = false
         
        ref.observe(.childChanged, with: { snapshot in
            print("A child has changed: \(snapshot)")
            change = true
        })
-        
-        if change {
-                await self.fetchMolds { result in
-                    molds = result
-                }
-            
-        } else {
-            change = false
-        }
-        return molds
+        return change
     }
 }

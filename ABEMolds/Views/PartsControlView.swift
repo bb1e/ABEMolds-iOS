@@ -27,7 +27,7 @@ struct PartsControlView: View {
             Text("31/10/2023 8:23")
               .font(Font.custom("SF Pro", size: 24))
               .foregroundColor(.black)
-            
+            Spacer()
             Rectangle()
               .foregroundColor(.clear)
               .frame(width: 392, height: 225)
@@ -40,7 +40,7 @@ struct PartsControlView: View {
             Text("Cavity Temperature: \(item.currentParameters.cavityTempC)ºC\nPlastic Temperature: \(item.currentParameters.plasticTempC)ºC\nFill Time: 3.43s\nAvg. Injection Pressure: 3.783kg/cm3")
               .font(Font.custom("SF Pro", size: 17))
               .foregroundColor(.black)
-            
+            Spacer()
             //check still
             if !item.currentParameters.isAcceptingParts && !isRejecting {
                 HStack {

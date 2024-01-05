@@ -16,12 +16,12 @@ struct ContentView: View {
     @State var partsQualityChartData: [ChartData] = []
     @State var partsProducedPerWeekChartData: [ChartData] = []
     @State var moldsInProductionChartData: [ChartData] = []
+    @State var changed: Bool = false
     
     init() {
         UITabBar.appearance().isHidden = true
-        Task {
-            //manager.observeChangesInMolds()
-        }
+        changed = manager.observeChangesInMolds()
+
     }
     
     
@@ -59,6 +59,23 @@ struct ContentView: View {
                 }
             }
             viewModel.scheduleNotification(title: "notificação", body: "this is a notif")
+        }
+        .onChange(of: changed) { oldValue, newValue in
+            Task {
+                await manager.fetchMolds { fetchedMolds in
+                    self.molds = fetchedMolds
+                    self.totalPartsPerDayChartsData = viewModel.partsProducedChartData(molds: molds)
+                    self.partsQualityChartData = viewModel.partsQualityChartData(molds: molds)
+                    self.partsProducedPerWeekChartData = viewModel.partsProducedWeekChartData(molds: molds)
+                    self.moldsInProductionChartData = viewModel.moldsInProductionChartData(molds: molds)
+                    print(molds.first?.currentParameters.overrideUser)
+                    //print(molds.count)
+                    //print(totalPartsPerDayChartsData)
+                    //print(partsQualityChartData)
+                    //print(partsProducedPerWeekChartData)
+                    //print(moldsInProductionChartData)
+                }
+            }
         }
     }
 }
