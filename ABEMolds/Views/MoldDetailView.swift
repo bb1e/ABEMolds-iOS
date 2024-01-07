@@ -34,7 +34,7 @@ struct MoldDetailView: View {
                 )
                 Text("STATUS: \(item.currentParameters.stage)\nCAVITY TEMPERATURE: \(String(format: "%.2f",item.currentParameters.cavityTempC))ºC\nMACHINE: \(item.machineName)\nCUSTOMER: \(item.customerName)\n")
                 .font(Font.custom("SF Pro", size: 20))
-                .foregroundColor(.black)
+                //.foregroundColor(.black)
                 .lineSpacing(8)
                 .padding(.top, 20)
                 

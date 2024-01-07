@@ -18,11 +18,11 @@ struct PartsControlView: View {
         VStack {
             Text("Parts Control")
               .font(Font.custom("SF Pro", size: 24))
-              .foregroundColor(.black)
+              //.foregroundColor(.black)
               .frame(width: 350, alignment: .topLeading)
             Text(item.projectName)
               .font(Font.custom("SF Pro", size: 16))
-              .foregroundColor(.black)
+              //.foregroundColor(.black)
               .frame(width: 350, alignment: .topLeading)
             Spacer()
             Rectangle()
@@ -32,11 +32,11 @@ struct PartsControlView: View {
             
             Text(item.currentParameters.stage)
               .font(Font.custom("SF Pro", size: 17))
-              .foregroundColor(.black)
+              //.foregroundColor(.black)
               .padding(.top, 30)
             Text("Cavity Temperature: \(String(format: "%.2f", item.currentParameters.cavityTempC))ºC\nPlastic Temperature: \(String(format: "%.2f",item.currentParameters.plasticTempC))ºC\nFlow: \(String(format: "%.2f",item.currentParameters.injectionFlow))\nAvg. Pressure: \(String(format: "%.2f",item.currentParameters.pressure))kg/cm3")
               .font(Font.custom("SF Pro", size: 17))
-              .foregroundColor(.black)
+              //.foregroundColor(.black)
               .padding(.top, 7)
             Spacer()
             //check still

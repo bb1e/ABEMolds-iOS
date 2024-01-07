@@ -207,9 +207,11 @@ struct ARViewContainer: UIViewRepresentable {
         arView.scene.addAnchor(lightAnchor)
         
         // Set debug options
+        /*
         #if DEBUG
         arView.debugOptions = [.showFeaturePoints, .showAnchorOrigins, .showAnchorGeometry]
         #endif
+         */
 
         return arView
         

@@ -46,9 +46,10 @@ struct MoldsView: View {
                         MoldDetailView(item: mold)
                     }                    }
                 .padding()
-                .background(Color.white)
-                .cornerRadius(10)
-                .shadow(radius: 10)
+                //.background(Color.white)
+                //.cornerRadius(10)
+                .overlay(RoundedRectangle(cornerRadius: 10).stroke(lineWidth: 1).foregroundStyle(.gray))
+                //.shadow(radius: 10)
                 VStack {
                     Text("STOPPED")
                         .font(.caption)
@@ -68,9 +69,9 @@ struct MoldsView: View {
                     }
                 }
                 .padding()
-                .background(Color.white)
-                .cornerRadius(10)
-                .shadow(radius: 10)
+                .overlay(RoundedRectangle(cornerRadius: 10).stroke(lineWidth: 1).foregroundStyle(.gray))
+                //.cornerRadius(10)
+                //.shadow(radius: 10)
             }
         }
         .padding()
