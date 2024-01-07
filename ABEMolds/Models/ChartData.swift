@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ChartData {
+struct ChartData: Equatable {
     let name: String
     let value: Int
 }

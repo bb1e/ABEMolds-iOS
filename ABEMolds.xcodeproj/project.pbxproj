@@ -32,6 +32,7 @@
 		4860AE0B2B3EE935007AD057 /* MoldsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4860AE0A2B3EE935007AD057 /* MoldsViewModel.swift */; };
 		4860AE0D2B3EE945007AD057 /* MoldsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4860AE0C2B3EE945007AD057 /* MoldsManager.swift */; };
 		487F4E242B48B0FA0002701B /* PopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487F4E232B48B0FA0002701B /* PopupView.swift */; };
+		487F4E262B49B3EE0002701B /* MoldsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487F4E252B49B3EE0002701B /* MoldsViewModelTests.swift */; };
 		489940A32B3A00BE001CFC25 /* CardSectionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489940A22B3A00BE001CFC25 /* CardSectionList.swift */; };
 		489940A52B3A045D001CFC25 /* MoldDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489940A42B3A045D001CFC25 /* MoldDetailView.swift */; };
 		48BEA5532B043F3F002B7C67 /* DonutChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BEA5522B043F3F002B7C67 /* DonutChart.swift */; };
@@ -96,6 +97,7 @@
 		4860AE0C2B3EE945007AD057 /* MoldsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoldsManager.swift; sourceTree = "<group>"; };
 		487F4E222B48AF550002701B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		487F4E232B48B0FA0002701B /* PopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupView.swift; sourceTree = "<group>"; };
+		487F4E252B49B3EE0002701B /* MoldsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoldsViewModelTests.swift; sourceTree = "<group>"; };
 		489940A22B3A00BE001CFC25 /* CardSectionList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSectionList.swift; sourceTree = "<group>"; };
 		489940A42B3A045D001CFC25 /* MoldDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoldDetailView.swift; sourceTree = "<group>"; };
 		48BEA5522B043F3F002B7C67 /* DonutChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonutChart.swift; sourceTree = "<group>"; };
@@ -221,6 +223,7 @@
 			isa = PBXGroup;
 			children = (
 				48C1A0DD2AFC182100BF0582 /* ABEMoldsTests.swift */,
+				487F4E252B49B3EE0002701B /* MoldsViewModelTests.swift */,
 			);
 			path = ABEMoldsTests;
 			sourceTree = "<group>";
@@ -488,6 +491,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				487F4E262B49B3EE0002701B /* MoldsViewModelTests.swift in Sources */,
 				48C1A0DE2AFC182100BF0582 /* ABEMoldsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

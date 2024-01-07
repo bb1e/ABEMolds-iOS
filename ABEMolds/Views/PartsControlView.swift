@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PartsControlView: View {
     @State var item: Mold
-    @Environment(\.presentationMode) var presentationMode
+
     
     var manager = MoldsManager()
     @State var didTap: Bool = false
@@ -25,7 +25,6 @@ struct PartsControlView: View {
               .foregroundColor(.black)
               .frame(width: 350, alignment: .topLeading)
             Spacer()
-
             Rectangle()
               .foregroundColor(.clear)
               .frame(width: 392, height: 225)

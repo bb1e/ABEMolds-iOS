@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-
 struct MoldsView: View {
     var manager = MoldsManager()
     @Binding var molds: [Mold]

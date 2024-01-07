@@ -20,7 +20,6 @@ import ARKit
 struct MoldARView : View {
     @State private var autoMode = false
     @State var item: Mold
-    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         @ObservedObject var arViewModel = ARViewModel()

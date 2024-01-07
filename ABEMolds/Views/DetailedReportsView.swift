@@ -16,7 +16,6 @@ struct DetailedReportsView: View {
     var viewModel = MoldsViewModel()
     
     @State var item: Mold
-    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         ScrollView {

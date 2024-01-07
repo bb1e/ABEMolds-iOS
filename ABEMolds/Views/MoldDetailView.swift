@@ -11,7 +11,6 @@ import SwiftUI
 struct MoldDetailView: View {
     
     @State var item: Mold
-    @Environment(\.presentationMode) var presentationMode
     
     var viewModel = MoldsViewModel()
     @State var totalPartsByMoldPerDayChartsData: [ChartData] = []
