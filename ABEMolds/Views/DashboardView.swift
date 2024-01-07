@@ -33,7 +33,7 @@ struct DashboardView: View {
                     BarChart(data: $partsProducedData, title: "Parts produced", description: "Number of parts produced per week")
                         .frame(height: 200)
                         .padding()
-                        .padding(.bottom, 200)
+                        .padding(.bottom, 50)
                         .padding(.top)
                 }
                 .padding(50)
