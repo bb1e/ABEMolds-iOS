@@ -43,13 +43,14 @@ struct MoldsView: View {
                         }
                     }
                     .navigationDestination(for: Mold.self) { mold in
-                        MoldDetailView(item: mold)
-                    }                    }
+                        MoldDetailView(item: mold, molds: molds)
+                    }
+                }
                 .padding()
-                //.background(Color.white)
-                //.cornerRadius(10)
-                .overlay(RoundedRectangle(cornerRadius: 10).stroke(lineWidth: 1).foregroundStyle(.gray))
-                //.shadow(radius: 10)
+                .overlay(RoundedRectangle(cornerRadius: 10)
+                        .stroke(lineWidth: 1)
+                        .foregroundStyle(.gray)
+                        )
                 VStack {
                     Text("STOPPED")
                         .font(.caption)
@@ -65,13 +66,14 @@ struct MoldsView: View {
                         }
                     }
                     .navigationDestination(for: Mold.self) { mold in
-                        MoldDetailView(item: mold)
+                        MoldDetailView(item: mold, molds: molds)
                     }
                 }
                 .padding()
-                .overlay(RoundedRectangle(cornerRadius: 10).stroke(lineWidth: 1).foregroundStyle(.gray))
-                //.cornerRadius(10)
-                //.shadow(radius: 10)
+                .overlay(RoundedRectangle(cornerRadius: 10)
+                        .stroke(lineWidth: 1)
+                        .foregroundStyle(.gray)
+                        )
             }
         }
         .padding()

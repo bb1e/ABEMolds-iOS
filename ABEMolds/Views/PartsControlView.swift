@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PartsControlView: View {
     @State var item: Mold
-
+    @State var molds: [Mold]
     
     var manager = MoldsManager()
     @State var didTap: Bool = false
@@ -18,11 +18,9 @@ struct PartsControlView: View {
         VStack {
             Text("Parts Control")
               .font(Font.custom("SF Pro", size: 24))
-              //.foregroundColor(.black)
               .frame(width: 350, alignment: .topLeading)
             Text(item.projectName)
               .font(Font.custom("SF Pro", size: 16))
-              //.foregroundColor(.black)
               .frame(width: 350, alignment: .topLeading)
             Spacer()
             Rectangle()
@@ -32,19 +30,15 @@ struct PartsControlView: View {
             
             Text(item.currentParameters.stage)
               .font(Font.custom("SF Pro", size: 17))
-              //.foregroundColor(.black)
               .padding(.top, 30)
             Text("Cavity Temperature: \(String(format: "%.2f", item.currentParameters.cavityTempC))ºC\nPlastic Temperature: \(String(format: "%.2f",item.currentParameters.plasticTempC))ºC\nFlow: \(String(format: "%.2f",item.currentParameters.injectionFlow))\nAvg. Pressure: \(String(format: "%.2f",item.currentParameters.pressure))kg/cm3")
               .font(Font.custom("SF Pro", size: 17))
-              //.foregroundColor(.black)
               .padding(.top, 7)
             Spacer()
-            //check still
-            if !item.currentParameters.isAcceptingParts && !didTap {
+            if !item.currentParameters.isAcceptingParts || (item.currentParameters.isAcceptingParts && !item.currentParameters.overrideUser) {
                 HStack {
                     Button(action: {
-                        manager.updateOverrideUser(moldId: item.id, overrideUser: true)
-                        self.didTap = true
+                        manager.updateOverrideUser(moldId: item.id, isAcceptingParts: false)
                     }) {
                         HStack (alignment: .center, spacing: 10) {
                             Image(systemName: "xmark")
@@ -59,8 +53,7 @@ struct PartsControlView: View {
                     }
                     
                     Button(action: {
-                        manager.updateOverrideUser(moldId: item.id, overrideUser: false)
-                        self.didTap = true
+                        manager.updateOverrideUser(moldId: item.id, isAcceptingParts: true)
                     }) {
                         HStack (alignment: .center, spacing: 10) {
                             Image(systemName: "checkmark")
@@ -76,6 +69,21 @@ struct PartsControlView: View {
                 }
             }
         }
+        .onChange(of: molds) { _ in
+            Task {
+                await manager.fetchMold(withId: item.id) { mold in
+                    item = mold ?? item
+                }
+            }
+        }
+        .onReceive(Timer.publish(every: 5, on: .main, in: .common).autoconnect()) { _ in
+            Task {
+                manager.observeChangesInMolds { result in
+                    self.molds = result
+                }
+            }
+        }
+
     }
 }
 

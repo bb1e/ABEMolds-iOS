@@ -211,8 +211,7 @@ struct ARViewContainer: UIViewRepresentable {
         #if DEBUG
         arView.debugOptions = [.showFeaturePoints, .showAnchorOrigins, .showAnchorGeometry]
         #endif
-         */
-
+        */
         return arView
         
     }

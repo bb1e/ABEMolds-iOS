@@ -143,16 +143,24 @@ class MoldsManager: ObservableObject {
         }
     }
     
-    func updateOverrideUser(moldId: String, overrideUser: Bool) {
+    func updateOverrideUser(moldId: String, isAcceptingParts: Bool) {
        let ref = Database.database().reference().child("molds").child(moldId)
        
-       ref.updateChildValues(["currentParameters/overrideUser": overrideUser]) { error, _ in
+       ref.updateChildValues(["currentParameters/overrideUser": true]) { error, _ in
            if let error = error {
                print("error overriding")
            } else {
                print("sucess overriding")
            }
        }
+        
+        ref.updateChildValues(["currentParameters/isAcceptingParts": isAcceptingParts]) { error, _ in
+            if let error = error {
+                print("error overriding")
+            } else {
+                print("sucess overriding")
+            }
+        }
     }
     
     private func parseDays(moldSnapshot: DataSnapshot) -> [Day] {
@@ -221,5 +229,122 @@ class MoldsManager: ObservableObject {
            var changed = true
        })
     }
+    
+    func fetchMold(withId id: String, completion: @escaping (Mold?) -> Void) async {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM-dd-yyyy hh:mm"
+        
+       Task {
+           let ref = Database.database().reference().child("molds").child(id)
+           ref.observeSingleEvent(of: .value, with: { (moldSnapshot) in
+               if let moldData = moldSnapshot.value as? [String: Any] {
+                   var currentCavityTemp: Double = 0.0
+                   var currentInjectionFlow: Double = 0.0
+                   var currentIsAcceptingParts: Bool = true
+                   var currentIsProducing: Bool = true
+                   var currentOverrideUser: Bool = false
+                   var currentPlasticTemp: Double = 0.0
+                   var currentPressure: Double = 0.0
+                   var currentStage: String = ""
+                   var cavityTempMax: Double = 0.0
+                   var coolingTempMax: Double = 0.0
+                   var coolingTempMin: Double = 0.0
+                   var coolingTimeMax: Double = 0.0
+                   var coolingTimeMin: Double = 0.0
+                   var fillPressureMax: Double  = 0.0
+                   var fillPressureMin: Double = 0.0
+                   var fillTimeMax: Double = 0.0
+                   var fillTimeMin: Double = 0.0
+                   var holdPressureMax: Double = 0.0
+                   var holdPressureMin: Double = 0.0
+                   var injectionFlowMax: Double = 0.0
+                   var injectionFlowMin: Double = 0.0
+                   var packPressureMax: Double = 0.0
+                   var packPressureMin: Double = 0.0
+                   var packTimeMax: Double = 0.0
+                   var packTimeMin: Double = 0.0
+                   var plasticTempMax: Double = 0.0
+                   var plasticTempMin: Double = 0.0
+                   
+                   var days: [Day] = []
+                   var weeks: [Week] = []
+                   
+                   let moldId = moldSnapshot.key
 
+                   if let currentParameters = moldData["currentParameters"] as? [String: Any]{
+                       currentCavityTemp = currentParameters["cavityTempC"] as? Double ?? 0.0
+                       currentInjectionFlow = currentParameters["injectionFlow"] as? Double ?? 0.0
+                       currentIsAcceptingParts = currentParameters["isAcceptingParts"] as? Bool ?? true
+                       currentIsProducing = currentParameters["isProducing"] as? Bool ?? true
+                       currentOverrideUser = currentParameters["overrideUser"] as? Bool ?? false
+                       currentPlasticTemp = currentParameters["plasticTempC"] as? Double ?? 0.0
+                       currentPressure = currentParameters["pressure"] as? Double ?? 0.0
+                       currentStage = currentParameters["stage"] as? String ?? ""
+                   }
+                   
+                   let dateManufacturingEnd = moldData["dateManufacturingEnd"] as? String ?? ""
+                   let dateManufacturingStart = moldData["dateManufacturingStart"] as? String ?? ""
+                   let customerName = moldData["customerName"] as? String ?? ""
+                   let machineName = moldData["machineName"] as? String ?? ""
+                   
+                   if let manufacturingParameters = moldData["manufacturingParameters"] as? [String: Any]{
+                       if let cavityTemp = manufacturingParameters["cavityTemp"] as? [String: Any] {
+                           cavityTempMax = cavityTemp["max"] as? Double ?? 0.0
+                       }
+                       if let coolingTemp = manufacturingParameters["coolingTemp"] as? [String: Any] {
+                           coolingTempMax = coolingTemp["max"] as? Double ?? 0.0
+                           coolingTempMin = coolingTemp["min"] as? Double ?? 0.0
+                       }
+                       if let coolingTime = manufacturingParameters["coolingTime"] as? [String: Any] {
+                           coolingTimeMax = coolingTime["max"] as? Double ?? 0.0
+                           coolingTimeMin = coolingTime["min"] as? Double ?? 0.0
+                       }
+                       if let fillPressure = manufacturingParameters["fillPressure"] as? [String: Any] {
+                           fillPressureMax = fillPressure["max"] as? Double ?? 0.0
+                           fillPressureMin = fillPressure["min"] as? Double ?? 0.0
+                       }
+                       if let fillTime = manufacturingParameters["fillTime"] as? [String: Any] {
+                           fillTimeMax = fillTime["max"] as? Double ?? 0.0
+                           fillTimeMin = fillTime["min"] as? Double ?? 0.0
+                       }
+                       if let holdPressure = manufacturingParameters["holdPressure"] as? [String: Any] {
+                           holdPressureMax = holdPressure["max"] as? Double ?? 0.0
+                           holdPressureMin = holdPressure["min"] as? Double ?? 0.0
+                       }
+                       if let injectionFlow = manufacturingParameters["injectionFlow"] as? [String: Any] {
+                           injectionFlowMax = injectionFlow["max"] as? Double ?? 0.0
+                           injectionFlowMin = injectionFlow["min"] as? Double ?? 0.0
+                       }
+                       if let packPressure = manufacturingParameters["packPressure"] as? [String: Any] {
+                           packPressureMax = packPressure["max"] as? Double ?? 0.0
+                           packPressureMin = packPressure["min"] as? Double ?? 0.0
+                       }
+                       if let packTime = manufacturingParameters["packTime"] as? [String: Any] {
+                           packTimeMax = packTime["max"] as? Double ?? 0.0
+                           packTimeMin = packTime["min"] as? Double ?? 0.0
+                       }
+                       if let plasticTemp = manufacturingParameters["plasticTemp"] as? [String: Any] {
+                           plasticTempMax = plasticTemp["max"] as? Double ?? 0.0
+                           plasticTempMin = plasticTemp["min"] as? Double ?? 0.0
+                       }
+                   }
+                   let projectName = moldData["projectName"] as? String ?? ""
+                   let totalPartsProduced = moldData["totalPartsProduced"] as? Int ?? 0
+                   let totalPartsRejected = moldData["totalPartsRejected"] as? Int ?? 0
+                   
+                   let finalManufacturingEndDate = dateFormatter.date(from: dateManufacturingEnd) ?? Date(timeIntervalSince1970: 0)
+                   let finalManufacturingStartDate = dateFormatter.date(from: dateManufacturingStart) ?? Date()
+                   
+                   days = self.parseDays(moldSnapshot: moldSnapshot)
+                   weeks = self.parseWeeks(moldSnapshot: moldSnapshot)
+                           
+                   let finalMold = Mold(id: moldId, currentParameters: CurrentParameters(cavityTempC: currentCavityTemp, injectionFlow: currentInjectionFlow, isAcceptingParts: currentIsAcceptingParts, isProducing: currentIsProducing, overrideUser: currentOverrideUser, plasticTempC: currentPlasticTemp, pressure: currentPressure, stage: currentStage), dateManufactoringEnd: finalManufacturingEndDate, dateManufactoringStart: finalManufacturingStartDate, days: days, manufactoringParameters: ManufactoringParameters(cavityTemp: CavityTemp(max: cavityTempMax), coolingTemp: CoolingTemp(max: coolingTempMax, min: coolingTempMin), coolingTime: CoolingTime(max: coolingTimeMax, min: coolingTimeMin), fillPressure: FillPressure(max: fillPressureMax, min: fillPressureMin), fillTime: FillTime(max: fillTimeMax, min: fillTimeMin), holdPressure: HoldPressure(max: holdPressureMax, min: holdPressureMin), injectionFlow: InjectionFlow(max: injectionFlowMax, min: injectionFlowMin), packPressure: PackPressure(max: packPressureMax, min: packPressureMin), packTime: PackTime(max: packTimeMax, min: packTimeMin), plasticTemp: PlasticTemp(max: plasticTempMax, min: plasticTempMin)), projectName: projectName, customerName: customerName, machineName: machineName, totalPartsProduced: totalPartsProduced, totalPartsRejected: totalPartsRejected, weeks: weeks)
+                   
+                   completion(finalMold)
+               } else {
+                   completion(nil)
+               }
+           })
+       }
+    }
 }

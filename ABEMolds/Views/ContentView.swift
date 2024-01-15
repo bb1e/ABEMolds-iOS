@@ -73,7 +73,7 @@ struct ContentView: View {
                 }
             )
         }*/
-        .onReceive(Timer.publish(every: 10, on: .main, in: .common).autoconnect()) { _ in
+        .onReceive(Timer.publish(every: 5, on: .main, in: .common).autoconnect()) { _ in
             Task {
                 manager.observeChangesInMolds { result in
                     self.molds = result

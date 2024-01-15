@@ -11,6 +11,8 @@ import SwiftUI
 struct MoldDetailView: View {
     
     @State var item: Mold
+    @State var molds: [Mold]
+    var manager = MoldsManager()
     
     var viewModel = MoldsViewModel()
     @State var totalPartsByMoldPerDayChartsData: [ChartData] = []
@@ -34,7 +36,6 @@ struct MoldDetailView: View {
                 )
                 Text("STATUS: \(item.currentParameters.stage)\nCAVITY TEMPERATURE: \(String(format: "%.2f",item.currentParameters.cavityTempC))ºC\nMACHINE: \(item.machineName)\nCUSTOMER: \(item.customerName)\n")
                 .font(Font.custom("SF Pro", size: 20))
-                //.foregroundColor(.black)
                 .lineSpacing(8)
                 .padding(.top, 20)
                 
@@ -52,7 +53,7 @@ struct MoldDetailView: View {
                         .cornerRadius(14)
                     }
         
-                    NavigationLink (destination: PartsControlView(item: item)) {
+                    NavigationLink (destination: PartsControlView(item: item, molds: molds)) {
                         HStack (alignment: .center, spacing: 10) {
                             Image(systemName: "doc.plaintext")
                             Text("Parts Control")
@@ -83,6 +84,20 @@ struct MoldDetailView: View {
                 Task {
                     self.totalPartsByMoldPerDayChartsData = viewModel.partsProducedByMoldChartData(mold: item)
                     self.partsQualityByMoldChartData = viewModel.partsQualityByMoldChartData(mold: item)
+                }
+            }
+            .onChange(of: molds) { _ in
+                Task {
+                    await manager.fetchMold(withId: item.id) { mold in
+                        item = mold ?? item
+                    }
+                }
+            }
+            .onReceive(Timer.publish(every: 5, on: .main, in: .common).autoconnect()) { _ in
+                Task {
+                    manager.observeChangesInMolds { result in
+                        self.molds = result
+                    }
                 }
             }
         }
